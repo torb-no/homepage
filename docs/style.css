@@ -1,0 +1,88 @@
+@font-face {
+    font-family: "Barlow";
+    src: url("fonts/Barlow-Regular.woff2") format('woff2');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Barlow";
+    src: url("fonts/Barlow-Bold.woff2") format('woff2');
+    font-weight: bold;
+}
+
+html {
+    font-family: "Barlow", sans-serif;
+    background: #EAEAEA;
+
+    --color-pink: #EB1478;
+    --color-purple: #9D21FF;
+    --color--blue: #455BFF;
+
+    font-size:62.5%; /* So 1.8rem becomes 18px etc... */
+}
+
+body {
+    text-align: center;
+    font-size: 2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color: #DEDEDE;
+        background: #1B1B1B;
+    }
+}
+
+header h1 {
+    text-transform: lowercase;
+    font-size: 14.4rem;
+    color: var(--color-pink);
+    margin: 0;
+}
+
+@supports (-webkit-text-stroke: 1px red) {
+    header h1 {
+        color: transparent;
+        -webkit-text-stroke: 0.2rem var(--color-pink);
+    }
+}
+
+section {
+    margin-top: 1.25em;
+}
+
+p {
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+a:link {
+    color: var(--color-blue);
+}
+
+a:visited {
+    color: var(--color-purple);
+}
+
+footer {
+    margin-top: 3em;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 1.4rem;
+}
+
+.social a {
+    margin: 0 1rem;
+}
+
+@media (max-width: 660px) {
+	html { 
+		font-size: 50%; /* Will result in 1.8rem being 14px */
+    }
+    header h1 {
+        font-size: 8rem;
+    }
+    footer {
+        font-size: 1.66rem;
+    }
+}
