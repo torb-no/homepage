@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<title>{{ block "title" . }}{{ .Title }} – Torb{{ end }}</title>
+
+<meta charset="utf-8">
+<link href='/style.css' rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+    {{ block "header" . }}
+        {{ partial "mainNav.html" . }}
+    {{ end }}
+
+    {{ block "main" . }}
+        BLOCK MAIN UNDEFINED
+    {{ end }}
+</body>
+
+<footer>
+    {{ block "footer" . }}
+        {{ partial "siteSections" . }}
+    {{ end }}
+    
+    <small class="copyrightNotice">
+        © 2021 Torb Lunde Miranda
+    </small>
+</footer>

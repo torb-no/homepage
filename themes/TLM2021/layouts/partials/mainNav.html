@@ -1,0 +1,19 @@
+<header>
+    <nav class="mainNav">
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+        {{ if $currentPage.IsMenuCurrent "main" . }}
+            <b 
+                class="navContainer navItem navItem-active" 
+                title="{{ .Title }}"
+            >{{ .Name }}</b>
+        {{ else }}
+            <a 
+                class="navContainer navItem {{ if $currentPage.HasMenuCurrent "main" . }}navItem-active{{ end }}"  
+                href="{{ .URL }}" 
+                title="{{ .Title }}"
+            >{{ .Name }}</a>
+        {{ end }}
+    {{ end }}
+    </nav>
+</header>

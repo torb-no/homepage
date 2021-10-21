@@ -1,0 +1,7 @@
+baseURL = 'http://www.torb.xyz/'
+languageCode = 'en-us'
+title = 'Torb Lunde Miranda'
+theme = 'TLM2021'
+publishdir = 'docs'
+[markup.goldmark.renderer]
+    unsafe = true

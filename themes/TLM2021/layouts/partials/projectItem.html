@@ -1,0 +1,10 @@
+<article class="projectItem">
+    {{ range .Resources.Match "thumbnail.*" }}
+        <img src="{{ .Permalink }}">
+    {{ end }}
+
+    <h3>
+        <a href="{{.Permalink}}">{{.Title}}</a>
+        {{ .Description }}
+    </h3>
+</article>

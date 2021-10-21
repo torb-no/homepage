@@ -1,0 +1,11 @@
+{{ define "main" }}
+   <div class="blurb">
+      {{ .Content }}
+   </div>
+
+   <div class="project-list">
+      {{ range .Pages }}
+         {{ partial "projectItem" . }}
+      {{ end }}
+   </div>
+{{ end }}
