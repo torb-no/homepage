@@ -114,7 +114,7 @@ img.straight-corners {
     margin-bottom: 2rem;
 }
 
-@media (min-width: 650px) {
+@media (min-width: 750px) {
     .content img {
         position: relative;
         width: 110%;
