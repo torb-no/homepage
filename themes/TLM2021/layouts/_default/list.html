@@ -1,9 +1,16 @@
 {{ define "main" }}
-   <div class="content article">
+   <div class="content">
       {{ .Content }}
+
+      {{ range .Pages }}
+      <article>
+         <h2 class="list-title">
+            <a href="{{.Permalink}}">{{.Title}}</a>
+         </h2>
+         <p>{{ .Summary }}</p>
+      </article>
+      {{ end }}
    </div>
 
-   {{ range .Pages }}
-   <a href="{{.Permalink}}">{{.Title}}</a>
-   {{ end }}
+   
 {{ end }}

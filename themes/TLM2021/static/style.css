@@ -74,6 +74,11 @@ h2, h3 {
     font-weight: normal;
 }
 
+h2.list-title {
+    font-size: 3rem;
+    text-align: center;
+}
+
 .blurb {
     max-width: 50rem;
     margin: 2rem auto 4rem;
