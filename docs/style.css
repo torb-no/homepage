@@ -234,7 +234,7 @@ pre code {
 }
 
 @media (prefers-color-scheme: dark) {
-    .highlight, .highlight code {
+    .highlight, code {
         background-color: rgb(32, 32, 32);
     }
 
