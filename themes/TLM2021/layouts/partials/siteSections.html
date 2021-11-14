@@ -39,6 +39,23 @@ Used both in footer and homepage.
 
 <section class="navContainer siteSection">
     <h2>
+        <a href="/blog" class="siteSectionItem navItem">Blog</a>
+    </h2>
+
+    {{ with .Site.GetPage "/blog" }}
+        {{ range where .Pages "Params.featured" true }}
+        <article>
+            <h2>
+                <a href="{{.Permalink}}">{{.Title}}</a>
+             </h2>
+             <p>{{ .Description }}</p>
+        </article>
+        {{ end }}
+    {{ end }}
+</section>
+
+<section class="navContainer siteSection">
+    <h2>
         <a href="/projects" class="siteSectionItem navItem">
             Projects
         </a>

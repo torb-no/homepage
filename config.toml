@@ -5,3 +5,5 @@ theme = 'TLM2021'
 publishdir = 'docs'
 [markup.goldmark.renderer]
     unsafe = true
+[markup.highlight]
+    noClasses = false
