@@ -8,7 +8,7 @@ weight = 4
 
 I’m an interaction designer and a front-end developer. I've worked on everything from corporate websites, enterprise web-apps to interactive installations.
 
-![Person looking into the camera smiling slightly](torb-photo.jpg)
+![Person looking into the camera smiling slightly](/about-torb-photo.jpg)
 
 
 ## Work
