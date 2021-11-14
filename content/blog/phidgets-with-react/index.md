@@ -78,7 +78,7 @@ Download the JavaScript Phidgets library on [JavaScript language page](https://w
 After downloading the [Phidgets JavaScript Library](https://www.phidgets.com/downloads/phidget22/libraries/any/Phidget22JavaScript.zip) place the *phidget22.min.js* and *sha265.min.js* in the public folder in your React app. After this add script references to these in index.html in the public folder. Now you’ve made the Phidget JavaScript library available for use in your React app and it will always be available in your global scope.
 
 {{< highlight html >}}
-‌<script src="/sha265.min.js"></script>
+<script src="/sha265.min.js"></script>
 <script src="/phidget22.min.js"></script>
 {{< /highlight >}}
 
