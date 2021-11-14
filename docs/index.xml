@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Torb on Torb Lunde Miranda</title>
-    <link>http://www.torb.xyz/</link>
+    <link>http://www.torb.no/</link>
     <description>Recent content in Torb on Torb Lunde Miranda</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://www.torb.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="http://www.torb.no/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>House of Salmon</title>
-      <link>http://www.torb.xyz/projects/house-of-salmon/</link>
+      <link>http://www.torb.no/projects/house-of-salmon/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.torb.xyz/projects/house-of-salmon/</guid>
+      <guid>http://www.torb.no/projects/house-of-salmon/</guid>
       <description>House of Salmon Interaction Design, Visual Design, Front-End Development, Game Development, Unity, C#, React, TypeScript, Android, Java, Capacitor, Craft CMS, Phidgets House of Salmon is a visitation for aquaculture. Here students and other can learn about how salmon farming works and it‘s history.
 While working for Back I designed and programmed experiences for several interactive installations and smartphone.
 This included a phone app that allows participants to register points, activate various installations and play mini games connected to various installations.</description>
@@ -19,46 +19,46 @@ This included a phone app that allows participants to register points, activate 
     
     <item>
       <title>Periodic System Wall</title>
-      <link>http://www.torb.xyz/projects/periodic-wall/</link>
+      <link>http://www.torb.no/projects/periodic-wall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.torb.xyz/projects/periodic-wall/</guid>
+      <guid>http://www.torb.no/projects/periodic-wall/</guid>
       <description>Periodic System Wall Interaction Design, UI Design, Front-End Development, React, TypeScript, Craft CMS, Phidgets Together with colleagues in Back I worked on a wall of the periodic table for Norwegian Mining Museum. This installation allowed visitors to learn about specific elements or groups of them.</description>
     </item>
     
     <item>
       <title>Omega 365</title>
-      <link>http://www.torb.xyz/projects/omega-365-webpage/</link>
+      <link>http://www.torb.no/projects/omega-365-webpage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.torb.xyz/projects/omega-365-webpage/</guid>
+      <guid>http://www.torb.no/projects/omega-365-webpage/</guid>
       <description>Omega 365 homepage Information Architecture, Web Design, Front-End Development, Bootstrap 5, HTML/CSS, JavaScript, C#, Appframe I worked on a comprehensive redesign of Omega 365&amp;rsquo;s corporate homepage, a company with over 1,500 employees from around the world. Here I worked on everything from the information architecture to concrete implementation. I also coordinated with developers on improvements to Omega&amp;rsquo;s proprietary content management system.</description>
     </item>
     
     <item>
       <title>Web-based editor</title>
-      <link>http://www.torb.xyz/projects/omega-web-based-editor/</link>
+      <link>http://www.torb.no/projects/omega-web-based-editor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.torb.xyz/projects/omega-web-based-editor/</guid>
+      <guid>http://www.torb.no/projects/omega-web-based-editor/</guid>
       <description>Omega 365&amp;rsquo;s web-based editor Front-end Development, HTML/CSS, JavaScript, jQuery Large parts of Omega 365&amp;rsquo;s developer tools are entirely web based. I worked on the UI design and front-end code for the editor and IDE used to create user facing webapps and websites. This was also used as a basis for other tools such as a SQL management tool. I also created tools for autogenerating code used both as a learning tool and for speeding up development.</description>
     </item>
     
     <item>
       <title>Contact</title>
-      <link>http://www.torb.xyz/contact/</link>
+      <link>http://www.torb.no/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.torb.xyz/contact/</guid>
+      <guid>http://www.torb.no/contact/</guid>
       <description> E-mail GitHub Twitter LinkedIn  </description>
     </item>
     
     <item>
       <title>Using Phidgets with React</title>
-      <link>http://www.torb.xyz/blog/phidgets-with-react/</link>
+      <link>http://www.torb.no/blog/phidgets-with-react/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.torb.xyz/blog/phidgets-with-react/</guid>
+      <guid>http://www.torb.no/blog/phidgets-with-react/</guid>
       <description>Using Phidgets with React Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React. For the impatient: the gotchas you need to be aware of is:
  Use the JavaScript library for browsers, not the NPM one. Use hooks to interact with the Phidgets library, as it’s very OOP oriented.  You can also check out this example repo.</description>
     </item>

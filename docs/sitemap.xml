@@ -2,28 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://www.torb.xyz/</loc>
+    <loc>http://www.torb.no/</loc>
   </url><url>
-    <loc>http://www.torb.xyz/about/</loc>
+    <loc>http://www.torb.no/about/</loc>
   </url><url>
-    <loc>http://www.torb.xyz/blog/</loc>
+    <loc>http://www.torb.no/blog/</loc>
   </url><url>
-    <loc>http://www.torb.xyz/projects/</loc>
+    <loc>http://www.torb.no/projects/</loc>
   </url><url>
-    <loc>http://www.torb.xyz/projects/house-of-salmon/</loc>
+    <loc>http://www.torb.no/projects/house-of-salmon/</loc>
   </url><url>
-    <loc>http://www.torb.xyz/projects/periodic-wall/</loc>
+    <loc>http://www.torb.no/projects/periodic-wall/</loc>
   </url><url>
-    <loc>http://www.torb.xyz/projects/omega-365-webpage/</loc>
+    <loc>http://www.torb.no/projects/omega-365-webpage/</loc>
   </url><url>
-    <loc>http://www.torb.xyz/projects/omega-web-based-editor/</loc>
+    <loc>http://www.torb.no/projects/omega-web-based-editor/</loc>
   </url><url>
-    <loc>http://www.torb.xyz/categories/</loc>
+    <loc>http://www.torb.no/categories/</loc>
   </url><url>
-    <loc>http://www.torb.xyz/contact/</loc>
+    <loc>http://www.torb.no/contact/</loc>
   </url><url>
-    <loc>http://www.torb.xyz/tags/</loc>
+    <loc>http://www.torb.no/tags/</loc>
   </url><url>
-    <loc>http://www.torb.xyz/blog/phidgets-with-react/</loc>
+    <loc>http://www.torb.no/blog/phidgets-with-react/</loc>
   </url>
 </urlset>
