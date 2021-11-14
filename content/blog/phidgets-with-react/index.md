@@ -13,6 +13,7 @@ For the impatient: the gotchas you need to be aware of is:
 
 1. Use the JavaScript library for browsers, *not* the NPM one.
 2. Use hooks to interact with the Phidgets library, as it’s very OOP oriented.
+3. It's important to cleanup (close phidgets and connections) on component de
 
 You can also check out [this example repo](https://github.com/torb-xyz/phidgets-in-react).
 
@@ -233,4 +234,65 @@ Now you can turn on and off the light using the buttons in your React app and ge
 
 ![LED turning on and off based on clicking buttons in a web page](control-led.gif)
 
-Hopefully this will enable you to use Phidgets with your React based applications. I have a [repo with the source code here](https://github.com/torb-xyz/phidgets-in-react/tree/main).
+
+## Cleaning up after yourself
+
+While the code we have so far does work in our very simple situation we're not quite following best practice. You may be familiar with cleaning up after yourself when using useEffects, maybe you added some event handlers and then you make sure to remove them after so avoid problems.
+
+You need to do the same with Phidgets. Havin several connections or phidget channels open can cause problems. This is espescially relevant if you're using Phidgets in several different components.
+
+Cleanup for when a component is removed we by returning a function in useEffect and doing the cleanup inside there. We do the cleanup itself by closing the sensor, led and connection. It's important that we do close the sensor and led *before* the connection.
+
+To do this we keep a list of our devices by declaring an array we store them by writing  `const phidgetDevices = [];` inside our useEffect block. Inside each of the `then(…` blocks we then add that device to the list (so we only add the ones that successfully open). After that your entire useEffect block should look like this:
+
+{{< highlight jsx >}}
+useEffect(() => {
+  const phidgetConnection = new phidget22.Connection({
+    hostname: 'localhost',
+    port: 8989,
+  });
+
+  const phidgetDevices = [];
+
+  phidgetConnection.connect().then(() => {
+    console.log('Connected to Phidgets')
+
+    const distanceSensor = new phidget22.DistanceSensor();
+    distanceSensor.onDistanceChange = function(distance) {
+      setDistance(distance);
+    };
+
+    distanceSensor.open().then(() => {
+      phidgetDevices.push(distanceSensor);
+    }).catch(err => {
+      console.error('Error opening sensor: ' + err)
+    });
+
+    const led = new phidget22.DigitalOutput();
+    led.setHubPort(2);
+    led.setIsHubPortDevice(true);
+
+    led.open().then(() => {
+      ledRef.current = led;
+      phidgetDevices.push(led);
+    }).catch(err => {
+      console.error('Error opening LED: ' + err);
+    });
+
+  }).catch(err => {
+    console.error('Error during connect: ' + err);
+  }) ;
+
+  return () => {
+    phidgetDevices.forEach(pd => pd.close());
+    phidgetConnection.close();
+  };
+}, [])
+{{< /highlight >}}
+
+
+## That's it!
+
+Using Phidgets can seem a bit tricky if haven't done it before, but once you know it's not too bad. Having the option to easily use sensors and actuators through Phidgets with the functional style UI like React is very handy!
+
+You can view the [source code in this repo](https://github.com/torb-xyz/phidgets-in-react/tree/main).
