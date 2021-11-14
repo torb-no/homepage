@@ -144,7 +144,7 @@ distanceSensor.open().catch(function(err) {
 ![Hand moving closer and further away from the distance sensor showing the distance in the console output](distance-log.gif)
 
 
-## Showing distance sensor in the React
+## Showing distance sensor in React
 
 Now that we’ve confirmed that we’re able to get data from the distance sensor let’s add some state-variables and HTML to make it visible. Your App.js should now look like this:
 
