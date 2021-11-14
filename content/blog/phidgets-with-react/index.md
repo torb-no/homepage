@@ -13,7 +13,7 @@ For the impatient: the gotchas you need to be aware of is:
 
 1. Use the JavaScript library for browsers, *not* the NPM one.
 2. Use hooks to interact with the Phidgets library, as it’s very OOP oriented.
-3. It's important to cleanup (close phidgets and connections) on component de
+3. Remember to clean up (close phidgets and connections) when a React component is deattached.
 
 You can also check out [this example repo](https://github.com/torb-xyz/phidgets-in-react).
 
