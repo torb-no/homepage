@@ -2,7 +2,7 @@
 title = "Omega 365"
 slug = 'omega-365-webpage'
 description = "Corporate homepage of the Omega 365 group."
-weight = 20
+weight = 14
 +++
 # Omega 365 homepage
 
