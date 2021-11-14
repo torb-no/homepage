@@ -6,6 +6,8 @@
   </url><url>
     <loc>http://www.torb.xyz/about/</loc>
   </url><url>
+    <loc>http://www.torb.xyz/blog/</loc>
+  </url><url>
     <loc>http://www.torb.xyz/projects/</loc>
   </url><url>
     <loc>http://www.torb.xyz/projects/house-of-salmon/</loc>
@@ -21,5 +23,7 @@
     <loc>http://www.torb.xyz/contact/</loc>
   </url><url>
     <loc>http://www.torb.xyz/tags/</loc>
+  </url><url>
+    <loc>http://www.torb.xyz/blog/phidgets-with-react/</loc>
   </url>
 </urlset>

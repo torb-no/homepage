@@ -20,7 +20,6 @@
 
 html {
     font-family: "Barlow", sans-serif;
-    /* background: #EAEAEA; */
 
     --color-a: #EB1478;
     --color-b: #E026B0;
@@ -32,10 +31,6 @@ html {
 
     --color-foreground: black;
     color: var(--color-foreground);
-
-    --color-pink: #EB1478;
-    --color-purple: #9D21FF;
-    --color--blue: #455BFF;
 
     font-size: 50%; /* Will result in 1.8rem being 14px */
 }
@@ -74,6 +69,20 @@ h2, h3 {
     font-weight: normal;
 }
 
+h3 {
+    font-style: italic;
+    text-align: center;
+}
+
+h2.list-title {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.list-description {
+    text-align: center;
+}
+
 .blurb {
     max-width: 50rem;
     margin: 2rem auto 4rem;
@@ -100,6 +109,10 @@ img {
 
 img.straight-corners {
     border-radius: 0;
+}
+
+img.no-shadow {
+    box-shadow: none;
 }
 
 .content {
@@ -146,6 +159,121 @@ img.center {
 
 .article {
     text-align: left;
+}
+
+/* #endregion */
+
+/* #region SYNTAX HIGHLIGHTING */
+
+code {
+    font-size: 1.8rem;
+    font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    /* Font stack taken from https://qwtel.com/posts/software/the-monospaced-system-ui-css-font-stack/ */
+}
+
+pre code {
+    font-size: 1.375rem;
+}
+
+.highlight {
+    border-radius: 3px;
+    padding: 0.25rem 2rem;
+    margin: 1rem 0 2rem;
+    overflow: scroll;
+    width: 100%;
+}
+
+.highlight, code {
+    background-color: rgb(247, 247, 247);
+}
+
+.highlight:hover {
+    overflow: visible;
+}
+
+@media (min-width: 750px) {
+    .highlight {
+        box-sizing: content-box;
+        position: relative;
+        
+        left: -2rem;
+    }
+}
+
+.highlight .p {
+    color: #4e4e4e;
+}
+
+.highlight .nt,
+.highlight .k,
+.highlight .kr {
+    color: #4c29ca;
+}
+
+.highlight .na,
+.highlight .nx,
+.highlight .kd {
+    color: #106fb3;
+}
+
+.highlight .mi {
+    color: #b6b300;
+}
+
+.highlight .kc {
+    color: #ca1d37;
+}
+
+.highlight .s,
+.highlight .s1 {
+    color: #ad1e61;
+}
+
+.highlight .cm,
+.highlight .c1 {
+    color: #19802c;
+}
+
+@media (prefers-color-scheme: dark) {
+    .highlight, .highlight code {
+        background-color: rgb(32, 32, 32);
+    }
+
+    .highlight .p {
+        color: #aaaaaa;
+    }
+
+    .highlight .nt,
+    .highlight .k,
+    .highlight .kr {
+        color: #9379f0;
+    }
+
+    .highlight .na,
+    .highlight .nx,
+    .highlight .kd {
+        color: #2e91d8;
+    }
+
+    .highlight .mi {
+        color: #b6b300  ;
+    }
+
+    .highlight .kc {
+        color: #dd455c;
+    }
+
+
+
+    .highlight .s,
+    .highlight .s1 {
+        color: #da3783;
+    }
+
+    .highlight .cm,
+    .highlight .c1 {
+        color: #44b358;
+    }
 }
 
 /* #endregion */
@@ -318,11 +446,6 @@ footer {
         height: 27rem;
         width: auto;
     }
-}
-
-.content.project h3 {
-    font-style: italic;
-    text-align: center;
 }
 
 /* #endregion */

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<title>Using Phidgets with React – Torb</title>
+
+<meta charset="utf-8">
+<link href='/style.css' rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+    
+        <header>
+    <nav class="mainNav">
+    
+    
+        
+            <a 
+                class="navContainer navItem "  
+                href="/" 
+                title="Torb"
+            >Torb</a>
+        
+    
+        
+            <a 
+                class="navContainer navItem "  
+                href="/about/" 
+                title="About"
+            >About</a>
+        
+    
+        
+            <a 
+                class="navContainer navItem navItem-active"  
+                href="/blog/" 
+                title="Blog"
+            >Blog</a>
+        
+    
+        
+            <a 
+                class="navContainer navItem "  
+                href="/projects/" 
+                title="Projects"
+            >Projects</a>
+        
+    
+        
+            <a 
+                class="navContainer navItem "  
+                href="/contact/" 
+                title="Contact"
+            >Contact</a>
+        
+    
+    </nav>
+</header>
+    
+
+    
+   <article class="content article">
+      <h1 id="using-phidgets-with-react">Using Phidgets with React</h1>
+<h3 id="phidgets-is-a-system-for-sensors-input-devices-and-controllers-of-things-like-led-or-motors-in-this-tutorial-ill-explain-gotchas-and-generally-how-to-use-it-with-react">Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React.</h3>
+<p><img src="phidgets.jpg" alt="Various electronics components such as distance sensor, Phidgets hub, relay, thumbstick, RFID, rotation senser and more."></p>
+<p>For the impatient: the gotchas you need to be aware of is:</p>
+<ol>
+<li>Use the JavaScript library for browsers, <em>not</em> the NPM one.</li>
+<li>Use hooks to interact with the Phidgets library, as it’s very OOP oriented.</li>
+</ol>
+<p>You can also check out <a href="https://github.com/torb-xyz/phidgets-in-react">this example repo</a>.</p>
+<h2 id="what-is-phidgets">What is Phidgets?</h2>
+<p><a href="https://www.phidgets.com">Phidgets</a> is a system for easily using physical sensors or actuators in your applications. The name is a riff on the 90s word for GUI components: &lsquo;widgets&rsquo; combined with &lsquo;physical&rsquo;. A <em>Phidget</em> can be an input like a <a href="https://www.phidgets.com/?tier=3&amp;catid=104&amp;pcid=84&amp;prodid=83">slider</a> or <a href="https://www.phidgets.com/?tier=3&amp;catid=5&amp;pcid=3&amp;prodid=960">distance sensor</a>. It can also be an output, such as a <a href="https://www.phidgets.com/docs/Motor_Selection_Guide">motor</a>, <a href="https://www.phidgets.com/?tier=3&amp;catid=46&amp;pcid=39&amp;prodid=1142">relay</a> or <a href="https://www.phidgets.com/?tier=3&amp;catid=99&amp;pcid=79&amp;prodid=964">LED controllers</a>.</p>
+<p>All this might make you think of Arduino. Arduino is similar in that it&rsquo;s an electronics platforms, but Phidgets is different in that it&rsquo;s specifically made to be used with computers. It&rsquo;s not a standalone microcontroller like Arduino. You also program them in a much easier and more high level way compared to Arduino. Arduino has it&rsquo;s place, but if all you want is some sensor input input or physical controls in your apps, then Phidgets is something you should consider. Note: I’m not affiliated with Phidgets, I just like their stuff.</p>
+<h2 id="hardware">Hardware</h2>
+<p>Before we get to the React part we have to get ready on the Phidgets hardware side of things. In this tutorial I’m going make a small project that uses a distance sensor and  a couple of LED lights to give feedback based on distance. Even if you’re using different Phidgets for different purposes this should give you a pretty good idea of how to use them with React.</p>
+<p>In addition to a computer, to follow this tutorial you’ll need:</p>
+<p><img src="hardware-selection.jpg" alt="Components listed below"></p>
+<ul>
+<li><a href="https://www.phidgets.com/?tier=3&amp;catid=2&amp;pcid=1&amp;prodid=643">VINT Hub Phidget</a></li>
+<li><a href="https://www.phidgets.com/?tier=3&amp;catid=5&amp;pcid=3&amp;prodid=960">Distance Phidget</a></li>
+<li><a href="https://www.phidgets.com/?tier=3&amp;catid=30&amp;pcid=26&amp;prodid=152">2 Phidget Cables</a></li>
+<li>An USB Mini-B connector</li>
+<li>1x White LED</li>
+</ul>
+<h2 id="os-and-driver-setup">OS and driver setup</h2>
+<p>Assuming you have some Phidget hardware, to get started you need to install the <a href="https://phidgets.com/docs/Phidgets_Drivers">drivers</a>. <em>After</em> you’ve installed your drivers connect your VINT Hub Phidget and open the Phidget Control Panel. Under Local Phidgets you should see <em>6-Port USB VINT Hub Phidget</em>.</p>
+<p><img alt="Control Panel listing ‘6-port USB VINT Hub Phidget’" src="control-panel.webp" class="no-shadow"></p>
+<p>Connecting the Distance Phidget to port 0 should make it appear in the Phidget Control Panel under the corresonding port. Double clicking on it should open a dialog with more information about it. It will also open Error Event Log filled with ‘Sensor value is ouside the valid range for this sensor.’ but you can safely ignore that.</p>
+<p><img src="control-panel-dist-change.gif" alt="Hand moving closer and further away from distance sensor with the distance changing in the control panel"></p>
+<p>Moving your hand up and down should let you see the Distance field in the dialog change as you the distance between your hand and the sensor changes.</p>
+<p>Connect the LED light to the phidget cable with so that the long end goes in the input from the white cable and the short end goes into the input from the black part of the cable like so:</p>
+<p><img src="connect-led.jpg" alt="VINT Cable lined up as described above"></p>
+<p>After connect the other end to port 2 on the VINT Hub. Now you go open Port 2 in the Phidget Control Panel. You’ll notice that it won’t come up with any automatic suggestions like it did for the Distance Phidget. This is because the LED light is an standard electronic component and not an specific Phidget that can connect from Phidgets themselves. We’re going to turn the light on and off digitally so we can double click on the Hub Port - Digital Output Mode. Doing this should give you a dialog. If you toggle the ON/OFF button in the dialog this should also toggle the light.</p>
+<p><img src="blinking-led.gif" alt="LED turning on and off based on mouse clicking in the control panel"></p>
+<h2 id="adding-phidgets-to-react">Adding Phidgets to React</h2>
+<p>Now that we’ve got everything set up and we know it works hardware wise we can look at getting it to do something in an React app! This part assumes you&rsquo;ve already set up a React app using <em>create-react-app</em> as decribed in <a href="https://beta.reactjs.org/learn/start-a-new-react-project">this guide on the React docs</a> and that you have the React development server running.</p>
+<p>To use Phidget with a browser application you need to turn on the network server. You do this in the Network Server tab.</p>
+<p><img alt="Control panel on the Network Server with a button to start the network server" src="control-panel-network.webp" class="no-shadow"></p>
+<p>Considering that there are several phidget related packages on NPM, including phidget22 which is the offical NPM library from Phidgets you might think that you should use one of those. However for JavaScript apps running in the browser like React <em>you cannot use any of the NPM packages!</em> These NPM packages are designed to be run in a server-side Node app.</p>
+<p>There are two official JavaScript libraries for phidget. The one previously mentioned for usage in server, and one made specifically for JavaScript that runs in the browser. We have to use the one for browsers.</p>
+<p>Download the JavaScript Phidgets library on <a href="https://www.phidgets.com/docs/Language_-_JavaScript">JavaScript language page</a>. On that page you can also find the official documentation and other code examples (though, none for React specifically).</p>
+<p><img alt="Code editor with files panel showing the results of doing as described in the following parapgraph" src="editor-with-files.webp" class="no-shadow"></p>
+<p>After downloading the <a href="https://www.phidgets.com/downloads/phidget22/libraries/any/Phidget22JavaScript.zip">Phidgets JavaScript Library</a> place the <em>phidget22.min.js</em> and <em>sha265.min.js</em> in the public folder in your React app. After this add script references to these in index.html in the public folder. Now you’ve made the Phidget JavaScript library available for use in your React app and it will always be available in your global scope.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">‌<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/sha265.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/phidget22.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
+<h2 id="basics-and-distance-sensor">Basics and distance sensor</h2>
+<p>To make it a bit easier to see what we’re doing remove most of App.js so it looks like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="cm">/* eslint-disable no-undef */</span>
+<span class="c1">// We need to disable no-undef eslint rule since
+</span><span class="c1">// eslint doesn&#39;t know about phidgets
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;./App.css&#39;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;App&#34;</span><span class="p">&gt;</span>
+      
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span></code></pre></div>
+<p>Since phidget is an object-oriented library that doesn’t work with the functional-reactive nature of React by default we have to use the <code>useEffect</code> hook. Use an empty list with the <code>useEffect</code> so it only updates once.</p>
+<p>Let’s add <code>useEffect</code> alongside with a phidget connection config and then connect to the phidget drivers server.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">phidgetConnection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">Connection</span><span class="p">({</span>
+    <span class="nx">hostname</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="nx">port</span><span class="o">:</span> <span class="mi">8989</span><span class="p">,</span>
+  <span class="p">});</span>
+
+  <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected to Phidgets&#39;</span><span class="p">)</span>
+  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error during connect: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">},</span> <span class="p">[]);</span></code></pre></div>
+<p>Run this and open your React app you should see <code>Connected to Phidgets</code> in the developer tools console in your browser. If you get an error check to make sure the Phidget Network Server is running.</p>
+<p>Now that we’ve managed to connect to Phidgets server let’s try to get some data from our distance sensor. Let’s set up the distance sensor object and print out values to console. We set the the distance sensor object inside the connection promise then block. We add a new object, set up an event listener by assigning it to <code>onDistanceChange</code> (instead of using <code>addEventListener</code> as is typical in JavaScript), and then we open the sensor. Your <em>App.js</em> should then look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kr">const</span> <span class="nx">distanceSensor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DistanceSensor</span><span class="p">();</span>
+<span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">onDistanceChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">distance</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Distance: &#39;</span> <span class="o">+</span> <span class="nx">distance</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening sensor: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">)</span>
+<span class="p">});</span></code></pre></div>
+<p>You should now get distance readings in console from the distance sensor.</p>
+<p><img src="distance-log.gif" alt="Hand moving closer and further away from the distance sensor showing the distance in the console output"></p>
+<h2 id="showing-distance-sensor-in-the-react">Showing distance sensor in the React</h2>
+<p>Now that we’ve confirmed that we’re able to get data from the distance sensor let’s add some state-variables and HTML to make it visible. Your App.js should now look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="cm">/* eslint-disable no-undef */</span>
+<span class="c1">// We need to disable no-undef eslint rule since
+</span><span class="c1">// eslint doesn&#39;t know about phidgets
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;./App.css&#39;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="p">[</span><span class="nx">distance</span><span class="p">,</span> <span class="nx">setDistance</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">phidgetConnection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">Connection</span><span class="p">({</span>
+      <span class="nx">hostname</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+      <span class="nx">port</span><span class="o">:</span> <span class="mi">8989</span><span class="p">,</span>
+    <span class="p">});</span>
+
+    <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected to Phidgets&#39;</span><span class="p">)</span>
+
+      <span class="kr">const</span> <span class="nx">distanceSensor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DistanceSensor</span><span class="p">();</span>
+      <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">onDistanceChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">distance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setDistance</span><span class="p">(</span><span class="nx">distance</span><span class="p">);</span>
+      <span class="p">};</span>
+
+      <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening sensor: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">)</span>
+      <span class="p">});</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error during connect: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="p">})</span> <span class="p">;</span>
+  <span class="p">},</span> <span class="p">[])</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;App&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Distance</span><span class="o">:</span> <span class="p">{</span><span class="nx">distance</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span></code></pre></div>
+<p>The app in action:</p>
+<p><img src="show-distance.gif" alt="Hand moving closer and further away from the distance sensor showing the distance on a web page"></p>
+<h2 id="controlling-the-light">Controlling the light</h2>
+<p>To control the lights we use a <code>DigitalOutput</code> object and then keep it stored in a reference so we can manipulate it from a button click event for example. We add the reference with <code>const ledRef = useRef();</code>. The setup of the led looks like this and should be inside the connection just like the distance sensor.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kr">const</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DigitalOutput</span><span class="p">();</span>
+<span class="nx">led</span><span class="p">.</span><span class="nx">setHubPort</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="nx">led</span><span class="p">.</span><span class="nx">setIsHubPortDevice</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="nx">led</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="nx">led</span><span class="p">;</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening LED: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+<p>When setting it up we need to also set the hub port an that it’s a hub port device. This is because the LED is not a smart VINT device but a simple device so we have to specify that.</p>
+<p>Now we just add a couple of buttons with event handlers that sets the state.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="p">}}&gt;</span>
+  <span class="nx">On</span>
+<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="p">}}&gt;</span>
+  <span class="nx">Off</span>
+<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span></code></pre></div>
+<p>Now you can turn on and off the light using the buttons in your React app and get distance input in your React app!</p>
+<p><img src="control-led.gif" alt="LED turning on and off based on clicking buttons in a web page"></p>
+<p>Hopefully this will enable you to use Phidgets with your React based applications. I have a <a href="https://github.com/torb-xyz/phidgets-in-react/tree/main">repo with the source code here</a>.</p>
+
+   </article>
+
+</body>
+
+<footer>
+    
+        
+
+
+<section class="navContainer siteSection">
+    
+        <h2>
+            <a href="/" class="siteSectionItem navItem">Torb</a>
+        </h2>
+        <p>
+            
+                Torb Lunde Miranda
+            
+        </p>
+    
+</section>
+
+<section class="navContainer siteSection">
+    <h2>
+        <a href="/about" class="siteSectionItem navItem">About</a>
+    </h2>
+
+
+    <p>
+        
+            Interaction designer &amp; front-end developer
+        
+    </p>
+
+    <p>
+        <a href="/about">More about me</a>
+    </p>
+</section>
+
+<section class="navContainer siteSection">
+    <h2>
+        <a href="/blog" class="siteSectionItem navItem">Blog</a>
+    </h2>
+
+    
+        
+        <article>
+            <h2>
+                <a href="http://www.torb.xyz/blog/phidgets-with-react/">Using Phidgets with React</a>
+             </h2>
+             <p>Phidgets is a system electronic sensors and actuators. Learn how to use it with React!</p>
+        </article>
+        
+    
+</section>
+
+<section class="navContainer siteSection">
+    <h2>
+        <a href="/projects" class="siteSectionItem navItem">
+            Projects
+        </a>
+    </h2>
+
+    
+        
+            <article class="projectItem">
+    
+        <img src="http://www.torb.xyz/projects/house-of-salmon/thumbnail.jpg">
+    
+
+    <h3>
+        <a href="http://www.torb.xyz/projects/house-of-salmon/">House of Salmon</a>
+        Interactive installations to learn about salmon farming
+    </h3>
+</article>
+        
+    
+
+    <p><a href="/projects">View all projects</a></p>
+</section>
+
+<section class="navContainer siteSection siteSection-contact">
+    <h2>
+        <a href="/contact" class="siteSectionItem navItem">Contact</a>
+    </h2>
+
+    <div class="contact">
+        <p>
+            
+                You can find me or contact me here.
+            
+        </p>
+
+        
+            <ul>
+<li><a href="mailto:contact-web@torb.xyz">E-mail</a></li>
+<li><a href="https://github.com/torb-xyz">GitHub</a></li>
+<li><a href="https://www.twitter.com/torb_xyz">Twitter</a></li>
+<li><a href="https://www.linkedin.com/in/torb-xyz/">LinkedIn</a></li>
+</ul>
+
+        
+    </div>
+    
+</section>
+
+    
+    
+    <small class="copyrightNotice">
+        © 2021 Torb Lunde Miranda
+    </small>
+</footer>

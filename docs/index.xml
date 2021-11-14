@@ -53,5 +53,15 @@ This included a phone app that allows participants to register points, activate 
       <description> E-mail GitHub Twitter LinkedIn  </description>
     </item>
     
+    <item>
+      <title>Using Phidgets with React</title>
+      <link>http://www.torb.xyz/blog/phidgets-with-react/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.torb.xyz/blog/phidgets-with-react/</guid>
+      <description>Using Phidgets with React Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React. For the impatient: the gotchas you need to be aware of is:
+ Use the JavaScript library for browsers, not the NPM one. Use hooks to interact with the Phidgets library, as it’s very OOP oriented.  You can also check out this example repo.</description>
+    </item>
+    
   </channel>
 </rss>
