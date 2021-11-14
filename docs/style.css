@@ -166,6 +166,9 @@ img.center {
 /* #region SYNTAX HIGHLIGHTING */
 
 code {
+    background-color: rgb(231, 231, 231);
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
     font-size: 1.8rem;
     font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
     /* Font stack taken from https://qwtel.com/posts/software/the-monospaced-system-ui-css-font-stack/ */
@@ -182,7 +185,7 @@ pre code {
     width: 100%;
 }
 
-.highlight, code {
+.highlight, .highlight code {
     background-color: rgb(247, 247, 247);
 }
 
@@ -234,7 +237,11 @@ pre code {
 }
 
 @media (prefers-color-scheme: dark) {
-    .highlight, code {
+    code {
+        background-color: rgb(51, 51, 51);
+    }
+
+    .highlight, .highlight code {
         background-color: rgb(32, 32, 32);
     }
 
