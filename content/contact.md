@@ -9,4 +9,4 @@ intro = 'You can find me or contact me here.'
 - [E-mail](mailto:contact-web@torb.xyz)
 - [GitHub](https://github.com/torb-xyz)
 - [Twitter](https://www.twitter.com/torb_xyz)
-- [LinkedIn](https://www.linkedin.com/in/torb-lunde-miranda-47748459/)
+- [LinkedIn](https://www.linkedin.com/in/torb-xyz/)
