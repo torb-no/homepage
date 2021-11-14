@@ -7,6 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="http://www.torb.no/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>About</title>
+      <link>http://www.torb.no/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.torb.no/about/</guid>
+      <description>Interaction designer and front-end developer I’m an interaction designer and a front-end developer. I&amp;rsquo;ve worked on everything from corporate websites, enterprise web-apps to interactive installations.
+Work Currently I work as a web designer and developer for Omega 365, and I have also done UI design, information architecture among other things for them in the past.
+I&amp;rsquo;ve also worked for Back where I designed and programmed interactive installations, games and other interactive experiences.</description>
+    </item>
+    
+    <item>
+      <title>Omega 365</title>
+      <link>http://www.torb.no/projects/omega-365-webpage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.torb.no/projects/omega-365-webpage/</guid>
+      <description>Omega 365 homepage Information Architecture, Web Design, Front-End Development, Bootstrap 5, HTML/CSS, JavaScript, C#, Appframe I worked on a comprehensive redesign of Omega 365&amp;rsquo;s corporate homepage, a company with over 1,500 employees from around the world. Here I worked on everything from the information architecture to concrete implementation. I also coordinated with developers on improvements to Omega&amp;rsquo;s proprietary content management system.</description>
+    </item>
+    
+    <item>
       <title>House of Salmon</title>
       <link>http://www.torb.no/projects/house-of-salmon/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -24,15 +44,6 @@ This included a phone app that allows participants to register points, activate 
       
       <guid>http://www.torb.no/projects/periodic-wall/</guid>
       <description>Periodic System Wall Interaction Design, UI Design, Front-End Development, React, TypeScript, Craft CMS, Phidgets Together with colleagues in Back I worked on a wall of the periodic table for Norwegian Mining Museum. This installation allowed visitors to learn about specific elements or groups of them.</description>
-    </item>
-    
-    <item>
-      <title>Omega 365</title>
-      <link>http://www.torb.no/projects/omega-365-webpage/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.torb.no/projects/omega-365-webpage/</guid>
-      <description>Omega 365 homepage Information Architecture, Web Design, Front-End Development, Bootstrap 5, HTML/CSS, JavaScript, C#, Appframe I worked on a comprehensive redesign of Omega 365&amp;rsquo;s corporate homepage, a company with over 1,500 employees from around the world. Here I worked on everything from the information architecture to concrete implementation. I also coordinated with developers on improvements to Omega&amp;rsquo;s proprietary content management system.</description>
     </item>
     
     <item>
@@ -60,7 +71,7 @@ This included a phone app that allows participants to register points, activate 
       
       <guid>http://www.torb.no/blog/phidgets-with-react/</guid>
       <description>Using Phidgets with React Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React. For the impatient: the gotchas you need to be aware of is:
- Use the JavaScript library for browsers, not the NPM one. Use hooks to interact with the Phidgets library, as it’s very OOP oriented.  You can also check out this example repo.</description>
+ Use the JavaScript library for browsers, not the NPM one. Use hooks to interact with the Phidgets library, as it’s very OOP oriented. Remember to clean up (close phidgets and connections) when a React component is deattached.</description>
     </item>
     
   </channel>

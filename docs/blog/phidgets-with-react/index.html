@@ -3,7 +3,7 @@
 <title>Using Phidgets with React – Torb</title>
 
 <meta charset="utf-8">
-<link href='/style.css?v=4' rel='stylesheet' type='text/css' />
+<link href='/style.css?v=5' rel='stylesheet' type='text/css' />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
@@ -65,6 +65,7 @@
 <ol>
 <li>Use the JavaScript library for browsers, <em>not</em> the NPM one.</li>
 <li>Use hooks to interact with the Phidgets library, as it’s very OOP oriented.</li>
+<li>Remember to clean up (close phidgets and connections) when a React component is deattached.</li>
 </ol>
 <p>You can also check out <a href="https://github.com/torb-xyz/phidgets-in-react">this example repo</a>.</p>
 <h2 id="what-is-phidgets">What is Phidgets?</h2>
@@ -216,7 +217,56 @@
 <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span></code></pre></div>
 <p>Now you can turn on and off the light using the buttons in your React app and get distance input in your React app!</p>
 <p><img src="control-led.gif" alt="LED turning on and off based on clicking buttons in a web page"></p>
-<p>Hopefully this will enable you to use Phidgets with your React based applications. I have a <a href="https://github.com/torb-xyz/phidgets-in-react/tree/main">repo with the source code here</a>.</p>
+<h2 id="cleaning-up-after-yourself">Cleaning up after yourself</h2>
+<p>While the code we have so far does work in our very simple situation we&rsquo;re not quite following best practice. You may be familiar with cleaning up after yourself when using useEffects, maybe you added some event handlers and then you make sure to remove them after so avoid problems.</p>
+<p>You need to do the same with Phidgets. Havin several connections or phidget channels open can cause problems. This is espescially relevant if you&rsquo;re using Phidgets in several different components.</p>
+<p>Cleanup for when a component is removed we by returning a function in useEffect and doing the cleanup inside there. We do the cleanup itself by closing the sensor, led and connection. It&rsquo;s important that we do close the sensor and led <em>before</em> the connection.</p>
+<p>To do this we keep a list of our devices by declaring an array we store them by writing  <code>const phidgetDevices = [];</code> inside our useEffect block. Inside each of the <code>then(…</code> blocks we then add that device to the list (so we only add the ones that successfully open). After that your entire useEffect block should look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">phidgetConnection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">Connection</span><span class="p">({</span>
+    <span class="nx">hostname</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="nx">port</span><span class="o">:</span> <span class="mi">8989</span><span class="p">,</span>
+  <span class="p">});</span>
+
+  <span class="kr">const</span> <span class="nx">phidgetDevices</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected to Phidgets&#39;</span><span class="p">)</span>
+
+    <span class="kr">const</span> <span class="nx">distanceSensor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DistanceSensor</span><span class="p">();</span>
+    <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">onDistanceChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">distance</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setDistance</span><span class="p">(</span><span class="nx">distance</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">phidgetDevices</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">distanceSensor</span><span class="p">);</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening sensor: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">});</span>
+
+    <span class="kr">const</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DigitalOutput</span><span class="p">();</span>
+    <span class="nx">led</span><span class="p">.</span><span class="nx">setHubPort</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="nx">led</span><span class="p">.</span><span class="nx">setIsHubPortDevice</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+    <span class="nx">led</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="nx">led</span><span class="p">;</span>
+      <span class="nx">phidgetDevices</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">led</span><span class="p">);</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening LED: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="p">});</span>
+
+  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error during connect: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+  <span class="p">})</span> <span class="p">;</span>
+
+  <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">phidgetDevices</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">pd</span> <span class="p">=&gt;</span> <span class="nx">pd</span><span class="p">.</span><span class="nx">close</span><span class="p">());</span>
+    <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+  <span class="p">};</span>
+<span class="p">},</span> <span class="p">[])</span></code></pre></div>
+<h2 id="thats-it">That&rsquo;s it!</h2>
+<p>Using Phidgets can seem a bit tricky if haven&rsquo;t done it before, but once you know it&rsquo;s not too bad. Having the option to easily use sensors and actuators through Phidgets with the functional style UI like React is very handy!</p>
+<p>You can view the <a href="https://github.com/torb-xyz/phidgets-in-react/tree/main">source code in this repo</a>.</p>
 
    </article>
 

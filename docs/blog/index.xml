@@ -13,7 +13,7 @@
       
       <guid>http://www.torb.no/blog/phidgets-with-react/</guid>
       <description>Using Phidgets with React Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React. For the impatient: the gotchas you need to be aware of is:
- Use the JavaScript library for browsers, not the NPM one. Use hooks to interact with the Phidgets library, as it’s very OOP oriented.  You can also check out this example repo.</description>
+ Use the JavaScript library for browsers, not the NPM one. Use hooks to interact with the Phidgets library, as it’s very OOP oriented. Remember to clean up (close phidgets and connections) when a React component is deattached.</description>
     </item>
     
   </channel>
