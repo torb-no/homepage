@@ -1,4 +1,4 @@
-baseURL = 'http://www.torb.no/'
+baseURL = 'https://www.torb.no/'
 languageCode = 'en-us'
 title = 'Torb Lunde Miranda'
 theme = 'TLM2021'
