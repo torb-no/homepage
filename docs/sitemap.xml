@@ -2,28 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://www.torb.no/</loc>
+    <loc>https://www.torb.no/</loc>
   </url><url>
-    <loc>http://www.torb.no/about/</loc>
+    <loc>https://www.torb.no/about/</loc>
   </url><url>
-    <loc>http://www.torb.no/blog/</loc>
+    <loc>https://www.torb.no/blog/</loc>
   </url><url>
-    <loc>http://www.torb.no/projects/</loc>
+    <loc>https://www.torb.no/projects/</loc>
   </url><url>
-    <loc>http://www.torb.no/projects/omega-365-webpage/</loc>
+    <loc>https://www.torb.no/projects/omega-365-webpage/</loc>
   </url><url>
-    <loc>http://www.torb.no/projects/house-of-salmon/</loc>
+    <loc>https://www.torb.no/projects/house-of-salmon/</loc>
   </url><url>
-    <loc>http://www.torb.no/projects/periodic-wall/</loc>
+    <loc>https://www.torb.no/projects/periodic-wall/</loc>
   </url><url>
-    <loc>http://www.torb.no/projects/omega-web-based-editor/</loc>
+    <loc>https://www.torb.no/projects/omega-web-based-editor/</loc>
   </url><url>
-    <loc>http://www.torb.no/categories/</loc>
+    <loc>https://www.torb.no/categories/</loc>
   </url><url>
-    <loc>http://www.torb.no/contact/</loc>
+    <loc>https://www.torb.no/contact/</loc>
   </url><url>
-    <loc>http://www.torb.no/tags/</loc>
+    <loc>https://www.torb.no/tags/</loc>
   </url><url>
-    <loc>http://www.torb.no/blog/phidgets-with-react/</loc>
+    <loc>https://www.torb.no/blog/phidgets-with-react/</loc>
   </url>
 </urlset>

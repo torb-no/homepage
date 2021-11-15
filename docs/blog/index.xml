@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Torb Lunde Miranda</title>
-    <link>http://www.torb.no/blog/</link>
+    <link>https://www.torb.no/blog/</link>
     <description>Recent content in Blog on Torb Lunde Miranda</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://www.torb.no/blog/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://www.torb.no/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using Phidgets with React</title>
-      <link>http://www.torb.no/blog/phidgets-with-react/</link>
+      <link>https://www.torb.no/blog/phidgets-with-react/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.torb.no/blog/phidgets-with-react/</guid>
+      <guid>https://www.torb.no/blog/phidgets-with-react/</guid>
       <description>Using Phidgets with React Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React. For the impatient: the gotchas you need to be aware of is:
  Use the JavaScript library for browsers, not the NPM one. Use hooks to interact with the Phidgets library, as it’s very OOP oriented. Remember to clean up (close phidgets and connections) when a React component is deattached.</description>
     </item>
