@@ -1,21 +1,21 @@
 +++
 title = 'About'
 menu = 'main'
-description = 'Interaction designer & front-end developer'
+description = 'Front-end developer and interaction designer'
 weight = 4
 +++ 
-# Interaction designer and front-end developer
+# Front-end developer and interaction designer
 
-I’m an interaction designer and a front-end developer. I've worked on everything from corporate websites, enterprise web-apps to interactive installations.
+I’m a front-end developer and interaction designer. I've worked on everything from websites, web-apps, interactive installations to e-learning courses.
 
 ![Person looking into the camera smiling slightly](/about-torb-photo.jpg)
 
 
-## Work
+## Experience and education
 
-Currently I work as a web designer and developer for [Omega 365](https://www.omega365.com/), and I have also done UI design, information architecture among other things for them in the past.
+Currently I work as a web developer and designer for [Omega 365](https://www.omega365.com/), and I have also done UI design, information architecture among other things for them in the past.
 
-I've also worked for [Back](https://back.no) where I designed and programmed interactive installations, games and other interactive experiences. I have also created temporary interactive installations for [Oslo Children's Museum](https://oslobarnemuseum.org/en/). You can get more details on what I worked in my [portfolio](/projects)
+I've also worked for [Back](https://back.no) where I designed and programmed interactive installations, games and other interactive experiences for museums and visitation centers. I also created temporary interactive installations for [Oslo Children's Museum](https://oslobarnemuseum.org/en/). You can get more details on what I worked in my [portfolio](/projects).
 
 For my bachelor I studied at the [University of Oslo](https://www.uio.no/english/), with a focus on interaction design, informatics and media theory. I previously studied interaction design at [Kristiania University College](https://www.kristiania.no/en/).
 
