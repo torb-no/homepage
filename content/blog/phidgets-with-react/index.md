@@ -5,6 +5,8 @@ featured = true
 +++
 # Using Phidgets with React
 
+<p class="date">14. November 2022</p>
+
 ### Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React.
 
 ![Various electronics components such as distance sensor, Phidgets hub, relay, thumbstick, RFID, rotation senser and more.](phidgets.jpg)

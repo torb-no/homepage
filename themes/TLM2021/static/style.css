@@ -127,6 +127,15 @@ img.no-shadow {
     margin-bottom: 2rem;
 }
 
+.content h1 {
+    margin-bottom: 1.75rem;
+}
+
+.content .date {
+    text-align: center;
+    margin-top: 0;
+}
+
 @media (min-width: 750px) {
     .content img {
         position: relative;
