@@ -1,6 +1,6 @@
 +++
 title = 'Sound Painter'
 slug = 'voice-painter'
-weight = 25
+weight = 26
 draft = true
 +++
