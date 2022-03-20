@@ -1,12 +1,12 @@
 +++
 title = 'About'
 menu = 'main'
-description = 'Front-end developer and interaction designer'
+description = 'Front-end developer, interaction designer and creative technologist'
 weight = 4
 +++ 
-# Front-end developer and interaction designer
+# Designing and developing experiences
 
-I’m a front-end developer and interaction designer. I've worked on everything from websites, web-apps, interactive installations to e-learning courses.
+I’m a front-end developer, interaction designer and creative technologist. I've worked on everything from websites, web-apps, interactive installations to e-learning courses.
 
 ![Person looking into the camera smiling slightly](/about-torb-photo.jpg)
 
