@@ -84,7 +84,7 @@ h2.list-title {
 }
 
 .blurb {
-    max-width: 50rem;
+    max-width: 45rem;
     margin: 2rem auto 4rem;
 }
 
@@ -484,7 +484,7 @@ footer {
 
 .siteSectionsHomepage .siteSection {
     font-size: 1.8rem;
-    max-width: 42rem;
+    max-width: 40rem;
     margin: 2rem auto 6rem;
 }
 
