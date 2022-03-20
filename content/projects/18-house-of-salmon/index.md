@@ -1,8 +1,8 @@
 +++
 title = "House of Salmon"
 slug = 'house-of-salmon'
-weight = 15
-description = "Interactive installations to learn about salmon farming"
+weight = 18
+description = "Interactive installations to learn about salmon farming."
 featured = true
 +++
 # House of Salmon
