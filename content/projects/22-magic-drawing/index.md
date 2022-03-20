@@ -1,7 +1,7 @@
 +++
 title = 'Magical drawing installation'
 slug = 'magical-drawing-installation'
-description = 'Collaborative drawing for kids with proximity as input'
+description = 'Collaborative drawing for kids with proximity as input.'
 weight = 22
 +++
 
