@@ -11,7 +11,7 @@ weight = 26
 
 ![Kids standing in front of a screen with splashes of in color](thumbnail.jpg)
 
-In co-operation with [Nora Tessem](https://www.linkedin.com/in/nora-tessem/) I created a prototype for an interactive installations that let‘s people make noise to throw virtual paint at a screen. The colour of the paint is based on the pitch of the sound and the intensity matches the volume.
+For [Oslo Children‘s Museum](https://oslobarnemuseum.org/en/) in co-operation with [Nora Tessem](https://www.linkedin.com/in/nora-tessem/) I created a prototype for an interactive installations that let‘s people make noise to throw virtual paint at a screen. The colour of the paint is based on the pitch of the sound and the intensity matches the volume.
 
 <video src="video.mp4" muted autoplay playsinline loop width=100% height="auto" />
 
