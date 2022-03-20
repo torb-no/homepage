@@ -1,12 +1,13 @@
 +++
 title = 'Magical drawing installation'
 slug = 'magical-drawing-installation'
+description = 'Collaborative drawing for kids with proximity as input'
 weight = 22
 +++
 
 # Magical drawing installation for kids
 
-### Creative Coding, Prototyping, C++, openFrameworks, Processing, Arduino, Grove System
+### Experience Design, Prototyping, C++, openFrameworks, Processing, Arduino, Grove System
 
 ![Kids hovering their hands over the edges of a screen displaying drawings from lines of stardust](thumbnail.jpg)
 
