@@ -5,7 +5,7 @@ featured = true
 +++
 # Using Phidgets with React
 
-<p class="date">14. November 2022</p>
+<p class="date">14. November 2021</p>
 
 ### Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React.
 
