@@ -52,8 +52,18 @@ This included a phone app that allows participants to register points, activate 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.torb.no/projects/magical-drawing-installation/</guid>
-      <description>Magical drawing installation for kids Creative Coding, Prototyping, C++, openFrameworks, Processing, Arduino, Grove System While studying at University of Oslo I collaborated on a project to prototype interactive installations for Oslo Children‘s Museum. Together with my group I iterated on ideas, eventually landing on an experience where kids could draw on magical screen alone or with others. When several used it together the installation implicitly encouraged collaboration.
+      <description>Magical drawing installation for kids Creative Technology, Prototyping, C++, openFrameworks, Processing, Arduino, Grove System While studying at University of Oslo I collaborated on a project to prototype interactive installations for Oslo Children‘s Museum. Together with my group I iterated on ideas, eventually landing on an experience where kids could draw on magical screen alone or with others. When several used it together the installation implicitly encouraged collaboration.
 This drawing machine controlled by holding hands over distance sensors by ”pushing” in the pair the direction you want the virtual pen to go.</description>
+    </item>
+    
+    <item>
+      <title>Sound Painter</title>
+      <link>https://www.torb.no/projects/sound-painter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.torb.no/projects/sound-painter/</guid>
+      <description>Sound Painter Creative Technology, Prototyping, Processing In co-operation with Nora Tessem I created a prototype for an interactive installations that let‘s people make noise to throw virtual paint at a screen. The colour of the paint is based on the pitch of the sound and the intensity matches the volume.
+Kids are often expected to sit and be quiet. We noticed that many of them found it especially fun that they where supposed to make a lot of noise.</description>
     </item>
     
     <item>
