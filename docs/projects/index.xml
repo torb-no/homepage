@@ -16,6 +16,15 @@
     </item>
     
     <item>
+      <title>Periodic System Wall</title>
+      <link>https://www.torb.no/projects/periodic-wall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.torb.no/projects/periodic-wall/</guid>
+      <description>Periodic System Wall Interaction Design, UI Design, Front-End Development, React, TypeScript, Craft CMS, Phidgets Together with colleagues in Back I worked on a wall of the periodic table for Norwegian Mining Museum. This installation allowed visitors to learn about specific elements or groups of them.</description>
+    </item>
+    
+    <item>
       <title>House of Salmon</title>
       <link>https://www.torb.no/projects/house-of-salmon/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -27,12 +36,12 @@ This included a phone app that allows participants to register points, activate 
     </item>
     
     <item>
-      <title>Periodic System Wall</title>
-      <link>https://www.torb.no/projects/periodic-wall/</link>
+      <title>Rockheim Hall of Fame</title>
+      <link>https://www.torb.no/projects/rockheim-hall-of-fame/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.torb.no/projects/periodic-wall/</guid>
-      <description>Periodic System Wall Interaction Design, UI Design, Front-End Development, React, TypeScript, Craft CMS, Phidgets Together with colleagues in Back I worked on a wall of the periodic table for Norwegian Mining Museum. This installation allowed visitors to learn about specific elements or groups of them.</description>
+      <guid>https://www.torb.no/projects/rockheim-hall-of-fame/</guid>
+      <description>Rockheim Hall of Fame User Interface Design, Information Architecture, Visual Design At Back I designed the touch screen experience for Rockheim Hall of Fame. In this screen visitors are able to learn about the inductees and their place in the history of Norwegian popular music.</description>
     </item>
     
     <item>

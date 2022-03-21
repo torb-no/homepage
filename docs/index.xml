@@ -12,7 +12,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.torb.no/about/</guid>
-      <description>Front-end developer and interaction designer I’m a front-end developer and interaction designer. I&amp;rsquo;ve worked on everything from websites, web-apps, interactive installations to e-learning courses.
+      <description>Designing and developing experiences I’m a front-end developer, interaction designer and creative technologist. I&amp;rsquo;ve worked on everything from websites, web-apps, interactive installations to e-learning courses.
 Experience and education Currently I work as a web developer and designer for Omega 365, and I have also done UI design, information architecture among other things for them in the past.
 I&amp;rsquo;ve also worked for Back where I designed and programmed interactive installations, games and other interactive experiences for museums and visitation centers.</description>
     </item>
@@ -27,6 +27,15 @@ I&amp;rsquo;ve also worked for Back where I designed and programmed interactive 
     </item>
     
     <item>
+      <title>Periodic System Wall</title>
+      <link>https://www.torb.no/projects/periodic-wall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.torb.no/projects/periodic-wall/</guid>
+      <description>Periodic System Wall Interaction Design, UI Design, Front-End Development, React, TypeScript, Craft CMS, Phidgets Together with colleagues in Back I worked on a wall of the periodic table for Norwegian Mining Museum. This installation allowed visitors to learn about specific elements or groups of them.</description>
+    </item>
+    
+    <item>
       <title>House of Salmon</title>
       <link>https://www.torb.no/projects/house-of-salmon/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -38,12 +47,12 @@ This included a phone app that allows participants to register points, activate 
     </item>
     
     <item>
-      <title>Periodic System Wall</title>
-      <link>https://www.torb.no/projects/periodic-wall/</link>
+      <title>Rockheim Hall of Fame</title>
+      <link>https://www.torb.no/projects/rockheim-hall-of-fame/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.torb.no/projects/periodic-wall/</guid>
-      <description>Periodic System Wall Interaction Design, UI Design, Front-End Development, React, TypeScript, Craft CMS, Phidgets Together with colleagues in Back I worked on a wall of the periodic table for Norwegian Mining Museum. This installation allowed visitors to learn about specific elements or groups of them.</description>
+      <guid>https://www.torb.no/projects/rockheim-hall-of-fame/</guid>
+      <description>Rockheim Hall of Fame User Interface Design, Information Architecture, Visual Design At Back I designed the touch screen experience for Rockheim Hall of Fame. In this screen visitors are able to learn about the inductees and their place in the history of Norwegian popular music.</description>
     </item>
     
     <item>
@@ -90,7 +99,7 @@ Kids are often expected to sit and be quiet. We noticed that many of them found 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.torb.no/blog/phidgets-with-react/</guid>
-      <description>Using Phidgets with React 14. November 2022
+      <description>Using Phidgets with React 14. November 2021
 Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React. For the impatient: the gotchas you need to be aware of is:
  Use the JavaScript library for browsers, not the NPM one. Use hooks to interact with the Phidgets library, as it’s very OOP oriented.</description>
     </item>
