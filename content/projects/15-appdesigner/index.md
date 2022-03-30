@@ -1,7 +1,7 @@
 +++
 title = 'Web-based editor'
 slug = 'omega-web-based-editor'
-weight = 35
+weight = 15
 description = 'Browser-based editor and tooling for an internal web framework.'
 +++
 # Omega 365's web-based editor
