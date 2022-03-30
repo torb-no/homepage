@@ -27,6 +27,15 @@ I&amp;rsquo;ve also worked for Back where I designed and programmed interactive 
     </item>
     
     <item>
+      <title>Web-based editor</title>
+      <link>https://www.torb.no/projects/omega-web-based-editor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.torb.no/projects/omega-web-based-editor/</guid>
+      <description>Omega 365&amp;rsquo;s web-based editor Front-end Development, HTML/CSS, JavaScript, jQuery Large parts of Omega 365&amp;rsquo;s developer tools are entirely web based. I worked on the UI design and front-end code for the editor and IDE used to create user facing webapps and websites. This was also used as a basis for other tools such as a SQL management tool. I also created tools for autogenerating code used both as a learning tool and for speeding up development.</description>
+    </item>
+    
+    <item>
       <title>Periodic System Wall</title>
       <link>https://www.torb.no/projects/periodic-wall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -73,15 +82,6 @@ This drawing machine controlled by holding hands over distance sensors by ”pus
       <guid>https://www.torb.no/projects/sound-painter/</guid>
       <description>Sound Painter Creative Technology, Prototyping, Processing For Oslo Children‘s Museum in co-operation with Nora Tessem I created a prototype for an interactive installations that let‘s people make noise to throw virtual paint at a screen. The colour of the paint is based on the pitch of the sound and the intensity matches the volume.
 Kids are often expected to sit and be quiet. We noticed that many of them found it especially fun that they where supposed to make a lot of noise.</description>
-    </item>
-    
-    <item>
-      <title>Web-based editor</title>
-      <link>https://www.torb.no/projects/omega-web-based-editor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.torb.no/projects/omega-web-based-editor/</guid>
-      <description>Omega 365&amp;rsquo;s web-based editor Front-end Development, HTML/CSS, JavaScript, jQuery Large parts of Omega 365&amp;rsquo;s developer tools are entirely web based. I worked on the UI design and front-end code for the editor and IDE used to create user facing webapps and websites. This was also used as a basis for other tools such as a SQL management tool. I also created tools for autogenerating code used both as a learning tool and for speeding up development.</description>
     </item>
     
     <item>
