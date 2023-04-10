@@ -2,17 +2,18 @@
     <nav class="mainNav">
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
+        {{ $name := lower .Name }}
         {{ if $currentPage.IsMenuCurrent "main" . }}
-            <b 
-                class="navContainer navItem navItem-active" 
+            <span 
+                class="mainNavItem-active-{{ $name }}" 
                 title="{{ .Title }}"
-            >{{ .Name }}</b>
+            >{{ $name }}</span>
         {{ else }}
             <a 
-                class="navContainer navItem {{ if $currentPage.HasMenuCurrent "main" . }}navItem-active{{ end }}"  
+                class="{{ if $currentPage.HasMenuCurrent "main" . }}mainNavItem-active-{{ $name }}{{ else }}mainNavItem-{{ $name }}{{ end }}"  
                 href="{{ .URL }}" 
                 title="{{ .Title }}"
-            >{{ .Name }}</a>
+            >{{ $name }}</a>
         {{ end }}
     {{ end }}
     </nav>

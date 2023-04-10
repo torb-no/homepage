@@ -1,0 +1,9 @@
+name = "TLM2023"
+description = "Re-design"
+tags = []
+features = []
+min_version = "0.41.0"
+
+[author]
+  name = "Torb Lunde Miranda"
+  homepage = "https//www.torb.no"

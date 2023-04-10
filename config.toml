@@ -1,7 +1,7 @@
 baseURL = 'https://www.torb.no/'
 languageCode = 'en-us'
 title = 'Torb Lunde Miranda'
-theme = 'TLM2021'
+theme = 'TLM2023'
 publishdir = 'docs'
 [markup.goldmark.renderer]
     unsafe = true

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<title>{{ block "title" . }}{{ .Title }} – Torb{{ end }}</title>
+
+<meta charset="utf-8">
+<link href='/style.css?v=6' rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+    <header>
+        <div>
+            <h1>Torb Lunde Miranda</h1>
+            <p>Designer and developer</p>
+        </div>
+        
+        {{ block "mainNav" . }}
+            {{ partial "mainNav.html" . }}
+        {{ end }}
+    </header>
+
+
+    <main>
+    {{ block "main" . }}
+        BLOCK MAIN UNDEFINED
+    {{ end }}
+    </main>
+
+
+    <footer>
+        {{ block "foooterSiteSections" . }}
+            {{ partial "siteSections" . }}
+        {{ end }}
+        
+        <small class="copyrightNotice">
+            © 2023 Torb Lunde Miranda
+        </small>
+    </footer>
+
+</body>
+
+<script data-host="https://microanalytics.io" data-dnt="false" src="https://microanalytics.io/js/script.js" id="ZwSg9rf6GA" async defer></script>
