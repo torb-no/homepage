@@ -1,7 +1,7 @@
 +++
 title = 'Projects'
 menu = 'main'
-weight = 5
+weight = 4
 +++
 # Some of the projects I've worked on
 
