@@ -9,23 +9,23 @@ and wrapped in footer when used on all other pages (in the footer)
     <p>
         My name is Torb Lunde Miranda and I'm a developer and designer based in Oslo, Norway.
         Get to know more about
-        <a class="mainNavButton-about" href="/about/">about</a>
+        <a class="mainNavItem about" href="/about/">about</a>
         me and this website.
     </p>
     
     <p>
         I've worked on many 
-        <a class="mainNavButton-projects" href="/projects/">projects</a>
+        <a class="mainNavItem projects" href="/projects/">projects</a>
         such as
-        <a href="/projects/LINK">webapps</a>,
-        <a href="/projects/LINK">interactive installations</a> 
+        <a href="/projects/omega-web-based-editor/">webapps</a>,
+        <a href="/projects/house-of-salmon/">interactive installations</a> 
         or
-        <a href="/projects/LINK">corporate websites</a>.
+        <a href="/projects/omega-365-webpage/">corporate websites</a>.
     </p>
     
     <p>
         From time to time I write on my 
-        <a class="mainNavButton-blog" href="/posts/">blog</a>.
+        <a class="mainNavItem blog" href="/blog/">blog</a>.
         My latest post is about
         {{ with .Site.GetPage "/blog" }}
             {{ range first 1 .Pages }}
@@ -36,14 +36,12 @@ and wrapped in footer when used on all other pages (in the footer)
     
     <p>
         You can 
-        <a class="mainNavButton-contact" href="/contact/">contact</a> 
+        <a class="mainNavItem contact" href="/contact/">contact</a> 
         via
         <a href="mailto:contact-web@torb.xyz">e-mail</a>
         or find me at 
         <a href="https://github.com/torb-no">GitHub</a>,
         <a href="https://octodon.social/@torb" rel="me">Mastodon</a>,
-        <a href="https://www.linkedin.com/in/torb-xyz/">LinkedIn</a> 
-        and
-        <a href="https://www.twitter.com/torb_xyz">Twitter</a>.
+        <a href="https://www.linkedin.com/in/torb-xyz/">LinkedIn</a>.
     </p>
 </div>

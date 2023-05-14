@@ -1,20 +1,16 @@
-<header>
-    <nav class="mainNav">
-    {{ $currentPage := . }}
-    {{ range .Site.Menus.main }}
-        {{ $name := lower .Name }}
-        {{ if $currentPage.IsMenuCurrent "main" . }}
-            <span 
-                class="mainNavItem-active-{{ $name }}" 
-                title="{{ .Title }}"
-            >{{ $name }}</span>
-        {{ else }}
-            <a 
-                class="{{ if $currentPage.HasMenuCurrent "main" . }}mainNavItem-active-{{ $name }}{{ else }}mainNavItem-{{ $name }}{{ end }}"  
-                href="{{ .URL }}" 
-                title="{{ .Title }}"
-            >{{ $name }}</a>
-        {{ end }}
+<nav class="mainNavBar">
+{{ $currentPage := . }}
+{{ range .Site.Menus.main }}
+    {{ $name := lower .Name }}
+    {{ if $currentPage.IsMenuCurrent "main" . }}
+        <span 
+            class="mainNavItem active {{ $name }}" 
+        >{{ $name }}</span>
+    {{ else }}
+        <a 
+            class="mainNavItem {{ $name }} {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}"  
+            href="{{ .URL }}" 
+        >{{ $name }}</a>
     {{ end }}
-    </nav>
-</header>
+{{ end }}
+</nav>
