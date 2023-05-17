@@ -1,0 +1,197 @@
+$color-1: rgb(235, 20, 120);
+$color-2: rgb(224, 38, 176);
+$color-3: rgb(200, 26, 250);
+$color-4: rgb(156, 30, 255);
+$color-5: rgb(121, 69, 255);
+$color-6: rgb(88, 80, 255);
+$color-7: rgb(69, 94, 255);
+
+$color-bg-light:#EAEAEA;
+$color-bg-dark: #232323;
+
+$layout-threshold-m: 750px;
+// 100% / 3 = 33.33333…%
+$col-width-m: 30%;
+$margin-width-m: 3.2999%;
+$left-margin-m: $col-width-m + $margin-width-m;
+$content-width-m: ($col-width-m * 2) + $margin-width-m;
+
+$layout-threshold-l: 1280px;
+// 100% / 4 = 25%
+$col-width-l: 20%;
+$margin-width-l: 5.0%;
+$left-margin-l: $col-width-l + $margin-width-l;
+$content-width-l: ($col-width-l * 2) + $margin-width-l;
+
+@font-face {
+	font-family: "Barlow";
+	src: url("/fonts/Barlow-Regular.woff2") format('woff2');
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Barlow";
+	src: url("/fonts/Barlow-Bold.woff2") format('woff2');
+	font-weight: bold;
+}
+
+html {
+	font-size: 62.5%; /* So 1.8rem becomes 18px etc... */
+	font-family: "Barlow", sans-serif;
+	
+	color-scheme: light dark;
+	background-color: $color-bg-light;
+	@media (prefers-color-scheme: dark) {
+		background-color: $color-bg-dark;
+	}
+}
+
+body {
+	font-size: 1.8rem;
+	margin: 1.66rem 2rem;
+}
+
+p { 
+	margin-bottom: 2.7rem;
+}
+
+h1, h2 {
+	font-weight: normal;
+}
+
+a {
+	color: darken($color-2, 5%);
+	@media (prefers-color-scheme: dark) {
+		color: lighten($color-2, 10%);
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* MASTHEAD */
+.masthead {
+	color: inherit;
+	text-decoration: none;
+	
+	h1 {
+		font-weight: bold;
+		letter-spacing: 0.1rem;
+		text-transform: uppercase;
+		font-size: inherit;
+		margin: 0;
+	}
+	
+	p {
+		margin: 0;
+	}
+}
+
+/* MAIN NAV ITEMS */
+
+.mainNavItem {
+	display: inline-block;
+	padding: 0 0.75rem 0 3.25rem;
+	line-height: 1.5;
+	text-decoration: none;
+	
+	border-style: solid;
+	border-width: 0.15rem;
+	border-radius: 0.5rem;
+	
+	background-repeat: no-repeat;
+	
+	// Decrease brightness for increased contrast to help legibility in light mode
+	filter: brightness(93%);
+	
+	&.active {
+		filter: none;
+		color: white;
+	}
+}
+
+.mainNavBar {
+	margin-top: 2rem;
+	
+	.mainNavItem {
+		margin: 0 0.5rem 1rem 0;
+	}
+}
+
+
+@mixin mainNavItem-($name, $color, $dark-mode-brightness, $icon-position) {
+	.mainNavItem-#{$name} {
+		color: $color;
+		border-color: $color;
+		background-image: url("/mainNavIcon/#{$name}.svg");
+		background-position: $icon-position;
+		
+		&.active {
+			background-color: $color;
+			background-image: url("/mainNavIcon/#{$name}-active.svg");
+			box-shadow: mix($color, $color-bg-light, $weight: 50%) 0 0 10px 0;
+		}
+ 
+		@media (prefers-color-scheme: dark) {
+			// Increase brightness for increased contrast to help legibility dark mode
+			filter: brightness($dark-mode-brightness);
+			
+			&.active {
+				box-shadow: $color 0 0 10px 0;
+			}
+		}
+	}
+}
+
+@include mainNavItem-("home",     $color-1, 120%, 1.1rem center);
+@include mainNavItem-("about",    $color-2, 120%, 1.1rem center);
+@include mainNavItem-("projects", $color-3, 120%, 1.0rem center);
+@include mainNavItem-("blog",     $color-4, 130%, 1.0rem 0.7rem);
+@include mainNavItem-("contact",  $color-5, 150%, 1.0rem 0.85rem);
+
+.sectionSummariesNav .mainNavItem {
+	margin: 0 0.25rem;
+}
+
+
+/* Section summary and footer */
+
+.sectionSummariesNav {
+	&::before {
+		content: "";
+		width: 40%;
+		height: 0.3rem;
+		border-radius: 9999px;
+		display: block;
+		background-color: $color-1;
+		margin: 3.6rem 0;
+		
+		box-shadow: mix($color-1, $color-bg-light, $weight: 50%) 0 0 5px 0;
+		
+		@media (prefers-color-scheme: dark) {
+			box-shadow: mix($color-1, $color-bg-dark, $weight: 75%) 0 0 5px 1px;
+		}
+	}
+	
+	p {
+		line-height: 2;
+		margin-bottom: 3.6rem;
+	}
+}
+
+
+footer {
+	margin-top: 5.333rem;
+}
+
+.copyrightNotice {
+	font-weight: bold;
+	letter-spacing: 1px;
+	
+	color: lighten(black, 5%);
+	@media (prefers-color-scheme: dark) {
+		color: darken(white, 5%)
+	}
+}

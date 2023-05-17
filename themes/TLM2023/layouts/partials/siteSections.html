@@ -9,13 +9,13 @@ and wrapped in footer when used on all other pages (in the footer)
     <p>
         My name is Torb Lunde Miranda and I'm a developer and designer based in Oslo, Norway.
         Get to know more about
-        <a class="mainNavItem about" href="/about/">about</a>
+        <a class="mainNavItem mainNavItem-about" href="/about/">about</a>
         me and this website.
     </p>
     
     <p>
         I've worked on many 
-        <a class="mainNavItem projects" href="/projects/">projects</a>
+        <a class="mainNavItem mainNavItem-projects" href="/projects/">projects</a>
         such as
         <a href="/projects/omega-web-based-editor/">webapps</a>,
         <a href="/projects/house-of-salmon/">interactive installations</a> 
@@ -25,7 +25,7 @@ and wrapped in footer when used on all other pages (in the footer)
     
     <p>
         From time to time I write on my 
-        <a class="mainNavItem blog" href="/blog/">blog</a>.
+        <a class="mainNavItem mainNavItem-blog" href="/blog/">blog</a>.
         My latest post is about
         {{ with .Site.GetPage "/blog" }}
             {{ range first 1 .Pages }}
@@ -36,7 +36,7 @@ and wrapped in footer when used on all other pages (in the footer)
     
     <p>
         You can 
-        <a class="mainNavItem contact" href="/contact/">contact</a> 
+        <a class="mainNavItem mainNavItem-contact" href="/contact/">contact</a> 
         via
         <a href="mailto:contact-web@torb.xyz">e-mail</a>
         or find me at 

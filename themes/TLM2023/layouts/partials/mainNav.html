@@ -4,11 +4,11 @@
     {{ $name := lower .Name }}
     {{ if $currentPage.IsMenuCurrent "main" . }}
         <span 
-            class="mainNavItem active {{ $name }}" 
+            class="mainNavItem mainNavItem-{{ $name }} active " 
         >{{ $name }}</span>
     {{ else }}
         <a 
-            class="mainNavItem {{ $name }} {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}"  
+            class="mainNavItem mainNavItem-{{ $name }} {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}"  
             href="{{ .URL }}" 
         >{{ $name }}</a>
     {{ end }}
