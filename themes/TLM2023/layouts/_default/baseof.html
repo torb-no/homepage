@@ -9,17 +9,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
+    {{ block "header" . }}
     <header>
         <a class="masthead" href="/">
-            <h1>Torb Lunde Miranda</h1>
-            <p>Designer and developer</p>
+            {{ partial "masthead.html" }}
         </a>
         
-        {{ block "mainNav" . }}
-            {{ partial "mainNav.html" . }}
-        {{ end }}
+        {{ partial "mainNav.html" . }}
     </header>
-
+    {{ end }}
 
     <main>
     {{ block "main" . }}
@@ -28,14 +26,16 @@
     </main>
 
 
-    <footer>
-        {{ block "foooterSiteSections" . }}
-            {{ partial "siteSections" . }}
-        {{ end }}
-        
-        <small class="copyrightNotice">
-            © 2023 Torb Lunde Miranda
-        </small>
+    <footer class="content-column-container with-left-margin">
+        <div class="content-column">
+            {{ block "foooterSiteSections" . }}
+                {{ partial "siteSections" . }}
+            {{ end }}
+            
+            <small class="copyrightNotice">
+                © 2023 Torb Lunde Miranda
+            </small>
+        </div>
     </footer>
 
 </body>

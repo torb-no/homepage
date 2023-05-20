@@ -1,15 +1,9 @@
 {{ define "title" }}Torb Lunde Miranda{{ end }}
 
-{{ define "mainNav" }}
-    <!-- don't use default -->
-{{ end }}
-
 {{ define "main" }}
-    <main class="siteSectionsHomepage">
-        {{ partial "siteSections" . }}
-    </main>
-{{ end }}
-
-{{ define "foooterSiteSections" }}
-    <!-- don't use default -->
+<div class="content-column-container with-left-margin">
+    <article class="content-column">
+        {{ .Content }}
+    </article>
+</div>
 {{ end }}

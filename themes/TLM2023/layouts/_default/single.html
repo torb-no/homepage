@@ -1,5 +1,7 @@
 {{ define "main" }}
-   <article class="content article">
-      {{ .Content }}
-   </article>
+   <div class="content-column-container with-left-margin">
+      <article class="content-column">
+         {{ .Content }}
+      </article>
+   </div>
 {{ end }}
