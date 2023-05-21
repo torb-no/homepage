@@ -1,4 +1,3 @@
-<nav class="mainNavBar">
 {{ $currentPage := . }}
 {{ range .Site.Menus.main }}
     {{ $name := lower .Name }}
@@ -13,4 +12,3 @@
         >{{ $name }}</a>
     {{ end }}
 {{ end }}
-</nav>

@@ -15,7 +15,9 @@
             {{ partial "masthead.html" }}
         </a>
         
+        <nav class="mainNavBar">
         {{ partial "mainNav.html" . }}
+        </nav>
     </header>
     {{ end }}
 
@@ -26,8 +28,8 @@
     </main>
 
 
-    <footer class="content-column-container with-left-margin">
-        <div class="content-column">
+    <div class="footer-container">
+        <footer>
             {{ block "foooterSiteSections" . }}
                 {{ partial "siteSections" . }}
             {{ end }}
@@ -35,8 +37,8 @@
             <small class="copyrightNotice">
                 © 2023 Torb Lunde Miranda
             </small>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
 </body>
 

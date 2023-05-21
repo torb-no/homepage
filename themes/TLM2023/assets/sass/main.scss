@@ -9,15 +9,26 @@ $color-7: rgb(69, 94, 255);
 $color-bg-light:#EAEAEA;
 $color-bg-dark: #232323;
 
-$col-width: 24rem;
-$margin-width: 3rem;
-
-$left-margin: $col-width + $margin-width;
-$content-column-width: ($col-width * 3) + ($margin-width * 2);
-
-$max-width: ($col-width * 6) + ($margin-width * 5);
-
 // * { background-color: rgba(255, 0, 0, 0.15); }
+
+@mixin small {
+	// Do deal with tiny width screens like Galaxy Fold
+	@media screen and (min-width: 333px) {
+		@content
+	}
+}
+
+@mixin medium {
+	@media screen and (min-width: 1000px) {
+		@content	
+	}
+}
+
+@mixin large {
+	@media screen and (min-width: 1300px) {
+		@content	
+	}
+}
 
 @font-face {
 	font-family: "Barlow";
@@ -32,7 +43,12 @@ $max-width: ($col-width * 6) + ($margin-width * 5);
 }
 
 html {
-	font-size: 62.5%; /* So 1.8rem becomes 18px etc... */
+	font-size: 50%;
+	
+	@include small {
+		font-size: 62.5%; /* So 1.8rem becomes 18px etc... */
+	}
+	
 	font-family: "Barlow", sans-serif;
 	
 	color-scheme: light dark;
@@ -46,10 +62,29 @@ html {
 
 body {
 	font-size: 1.8rem;
-	
-	
-	max-width: $max-width;
 	margin: auto;
+	
+	max-width: 70rem;
+	
+	@include medium {
+		max-width: 110rem;
+	}
+	
+	@include large {
+		max-width: 140rem;
+	}
+}
+
+@mixin grid {
+	@include medium() {
+		display: grid; 
+		grid-template-columns: repeat(8, 1fr);
+		grid-template-areas: 'left left main main main main main';
+	}
+	
+	@include large() {
+		grid-template-areas: 'left left main main main main';
+	}
 }
 
 p { 
@@ -62,6 +97,9 @@ h1, h2 {
 
 ul, ol {
 	padding-left: 1.666rem;
+	@include medium {
+		padding-left: 0;
+	}
 }
 
 ul {
@@ -81,10 +119,10 @@ img {
 	height: auto;
 }
 
+
+
 header {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
+	@include grid();
 }
 
 /* MASTHEAD */
@@ -92,10 +130,10 @@ header {
 	color: inherit;
 	text-decoration: none;
 	
-	width: 100%;
-	max-width: $left-margin;
+	grid-column: left;
 	
-	margin-bottom: 2rem;
+	display: block;
+	padding-bottom: 2rem;
 	
 	h1 {
 		font-weight: bold;
@@ -110,61 +148,48 @@ header {
 	}
 }
 
-.content-column-container {
-	// Used with .content-column for spacing
-	display: flex;
-	flex-wrap: wrap;
-	
-	&.with-left-margin::before {
-		content: "";
-		width: 100%;
-		max-width: $left-margin;
-	}
+.text-body-container {
+	@include grid()
 }
 
-.content-column {
-	width: 100%;
-	max-width: $content-column-width;
+.text-body {
+	grid-column: main;
 }
 
 /* MAIN NAV ITEMS */
 
 .mainNavBar {
-	width: $content-column-width;
+	grid-column: main;
 	
 	.mainNavItem {
 		margin: 0 0.25rem 1rem 0;
 	}
 }
-.mainNavItem {
-	display: inline-block;
-	padding: 0 0.75rem 0 3.25rem;
-	line-height: 1.5;
-	text-decoration: none;
-	
-	border-style: solid;
-	border-width: 0.15rem;
-	border-radius: 0.5rem;
-	
-	background-repeat: no-repeat;
-	
-	// Decrease brightness for increased contrast to help legibility in light mode
-	// filter: brightness(93%);
-	
-	&.active {
-		// filter: none;
-		color: white;
-	}
-}
 
-@mixin mainNavItem-($name, $color, $dark-mode-brightness, $icon-position) {
+@mixin mainNavItem-($name, $color, $dark-mode-brightness, $icon-position, $icon-width) {
 	.mainNavItem-#{$name} {
-		color: $color;
-		border-color: $color;
+		display: inline-block;
+		padding: 0 0.75rem;
+		padding-left: 3.25rem;
+		
+		line-height: 1.5;
+		text-decoration: none;
+		
+		border-style: solid;
+		border-width: 0.15rem;
+		border-radius: 0.5rem;
+		
+		background-repeat: no-repeat;
 		background-image: url("/mainNavIcon/#{$name}.svg");
 		background-position: $icon-position;
+		background-size: auto $icon-width;
+		
+		color: $color;
+		border-color: $color;
+		
 		
 		&.active {
+			color: white;
 			background-color: $color;
 			background-image: url("/mainNavIcon/#{$name}-active.svg");
 			box-shadow: mix($color, $color-bg-light, $weight: 50%) 0 0 10px 0;
@@ -181,15 +206,17 @@ header {
 	}
 }
 
-@include mainNavItem-("home",     $color-1, 120%, 1.1rem center);
-@include mainNavItem-("about",    $color-2, 120%, 1.1rem center);
-@include mainNavItem-("projects", $color-3, 120%, 1.0rem center);
-@include mainNavItem-("blog",     $color-4, 130%, 1.0rem 0.7rem);
-@include mainNavItem-("contact",  $color-5, 150%, 1.0rem 0.85rem);
+@include mainNavItem-("home",     $color-1, 120%, 1.1rem center,  1.6rem);
+@include mainNavItem-("about",    $color-2, 120%, 1.1rem center,  1.5rem);
+@include mainNavItem-("projects", $color-3, 120%, 1.0rem center,  1.4rem);
+@include mainNavItem-("blog",     $color-4, 130%, 1.0rem 0.7rem,  1.45rem);
+@include mainNavItem-("contact",  $color-5, 150%, 1.0rem 0.85rem, 1.3rem);
 
 .sectionSummariesNav .mainNavItem {
 	margin: 0 0.25rem;
 }
+
+
 
 /* Section summary and footer */
 
@@ -216,6 +243,14 @@ header {
 		line-height: 2;
 		margin-bottom: 3.6rem;
 	}
+}
+
+.footer-container {
+	@include grid();
+}
+
+footer {
+	grid-column: main;
 }
 
 footer .sectionSummariesNav {
