@@ -1,11 +1,20 @@
 {{ define "main" }}
-   <div class="blurb">
-      {{ .Content }}
+   <div class="text-body-container">
+      <div class="text-body">{{ .Content }}</div>
    </div>
 
-   <div class="project-list">
+   <div class="projects-list">
       {{ range .Pages }}
-         {{ partial "projectItem" . }}
+         <article class="projects-list-item">
+             {{ range .Resources.Match "thumbnail.*" }}
+                 <img src="{{ .Permalink }}">
+             {{ end }}
+         
+             <h2>
+                 <a href="{{.Permalink}}">{{.Title}}</a>
+                 {{ .Description }}
+             </h3>
+         </article>
       {{ end }}
    </div>
 {{ end }}
