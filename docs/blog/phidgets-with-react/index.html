@@ -102,120 +102,120 @@
 <p>Download the JavaScript Phidgets library on <a href="https://www.phidgets.com/docs/Language_-_JavaScript">JavaScript language page</a>. On that page you can also find the official documentation and other code examples (though, none for React specifically).</p>
 <p><img alt="Code editor with files panel showing the results of doing as described in the following parapgraph" src="editor-with-files.webp" class="no-shadow"></p>
 <p>After downloading the <a href="https://www.phidgets.com/downloads/phidget22/libraries/any/Phidget22JavaScript.zip">Phidgets JavaScript Library</a> place the <em>phidget22.min.js</em> and <em>sha265.min.js</em> in the public folder in your React app. After this add script references to these in index.html in the public folder. Now you’ve made the Phidget JavaScript library available for use in your React app and it will always be available in your global scope.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/sha265.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/phidget22.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/sha265.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/phidget22.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div>
 <h2 id="basics-and-distance-sensor">Basics and distance sensor</h2>
 <p>To make it a bit easier to see what we’re doing remove most of App.js so it looks like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="cm">/* eslint-disable no-undef */</span>
-<span class="c1">// We need to disable no-undef eslint rule since
-</span><span class="c1">// eslint doesn&#39;t know about phidgets
-</span><span class="c1"></span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="s1">&#39;./App.css&#39;</span><span class="p">;</span>
-
-<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;App&#34;</span><span class="p">&gt;</span>
-      
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="cm">/* eslint-disable no-undef */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// We need to disable no-undef eslint rule since
+</span></span></span><span class="line"><span class="cl"><span class="c1">// eslint doesn&#39;t know about phidgets
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="s1">&#39;./App.css&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;App&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span></span></span></code></pre></div>
 <p>Since phidget is an object-oriented library that doesn’t work with the functional-reactive nature of React by default we have to use the <code>useEffect</code> hook. Use an empty list with the <code>useEffect</code> so it only updates once.</p>
 <p>Let’s add <code>useEffect</code> alongside with a phidget connection config and then connect to the phidget drivers server.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">phidgetConnection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">Connection</span><span class="p">({</span>
-    <span class="nx">hostname</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-    <span class="nx">port</span><span class="o">:</span> <span class="mi">8989</span><span class="p">,</span>
-  <span class="p">});</span>
-
-  <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected to Phidgets&#39;</span><span class="p">)</span>
-  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error during connect: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">},</span> <span class="p">[]);</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">phidgetConnection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">Connection</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">hostname</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">port</span><span class="o">:</span> <span class="mi">8989</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected to Phidgets&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error during connect: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="p">[]);</span></span></span></code></pre></div>
 <p>Run this and open your React app you should see <code>Connected to Phidgets</code> in the developer tools console in your browser. If you get an error check to make sure the Phidget Network Server is running.</p>
 <p>Now that we’ve managed to connect to Phidgets server let’s try to get some data from our distance sensor. Let’s set up the distance sensor object and print out values to console. We set the the distance sensor object inside the connection promise then block. We add a new object, set up an event listener by assigning it to <code>onDistanceChange</code> (instead of using <code>addEventListener</code> as is typical in JavaScript), and then we open the sensor. Your <em>App.js</em> should then look like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kr">const</span> <span class="nx">distanceSensor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DistanceSensor</span><span class="p">();</span>
-<span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">onDistanceChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">distance</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Distance: &#39;</span> <span class="o">+</span> <span class="nx">distance</span><span class="p">);</span>
-<span class="p">};</span>
-
-<span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening sensor: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">)</span>
-<span class="p">});</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">distanceSensor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DistanceSensor</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">onDistanceChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">distance</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Distance: &#39;</span> <span class="o">+</span> <span class="nx">distance</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening sensor: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span></span></span></code></pre></div>
 <p>You should now get distance readings in console from the distance sensor.</p>
 <p><img src="distance-log.gif" alt="Hand moving closer and further away from the distance sensor showing the distance in the console output"></p>
 <h2 id="showing-distance-sensor-in-react">Showing distance sensor in React</h2>
 <p>Now that we’ve confirmed that we’re able to get data from the distance sensor let’s add some state-variables and HTML to make it visible. Your App.js should now look like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="cm">/* eslint-disable no-undef */</span>
-<span class="c1">// We need to disable no-undef eslint rule since
-</span><span class="c1">// eslint doesn&#39;t know about phidgets
-</span><span class="c1"></span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="s1">&#39;./App.css&#39;</span><span class="p">;</span>
-
-<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="p">[</span><span class="nx">distance</span><span class="p">,</span> <span class="nx">setDistance</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-
-  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">phidgetConnection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">Connection</span><span class="p">({</span>
-      <span class="nx">hostname</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-      <span class="nx">port</span><span class="o">:</span> <span class="mi">8989</span><span class="p">,</span>
-    <span class="p">});</span>
-
-    <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected to Phidgets&#39;</span><span class="p">)</span>
-
-      <span class="kr">const</span> <span class="nx">distanceSensor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DistanceSensor</span><span class="p">();</span>
-      <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">onDistanceChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">distance</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">setDistance</span><span class="p">(</span><span class="nx">distance</span><span class="p">);</span>
-      <span class="p">};</span>
-
-      <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening sensor: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">)</span>
-      <span class="p">});</span>
-    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error during connect: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-    <span class="p">})</span> <span class="p">;</span>
-  <span class="p">},</span> <span class="p">[])</span>
-
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;App&#34;</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Distance</span><span class="o">:</span> <span class="p">{</span><span class="nx">distance</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="cm">/* eslint-disable no-undef */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// We need to disable no-undef eslint rule since
+</span></span></span><span class="line"><span class="cl"><span class="c1">// eslint doesn&#39;t know about phidgets
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="s1">&#39;./App.css&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">distance</span><span class="p">,</span> <span class="nx">setDistance</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">phidgetConnection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">Connection</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">hostname</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">port</span><span class="o">:</span> <span class="mi">8989</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected to Phidgets&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">distanceSensor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DistanceSensor</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">onDistanceChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">distance</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">setDistance</span><span class="p">(</span><span class="nx">distance</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening sensor: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error during connect: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span> <span class="p">[])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;App&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Distance</span><span class="o">:</span> <span class="p">{</span><span class="nx">distance</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span></span></span></code></pre></div>
 <p>The app in action:</p>
 <p><img src="show-distance.gif" alt="Hand moving closer and further away from the distance sensor showing the distance on a web page"></p>
 <h2 id="controlling-the-light">Controlling the light</h2>
 <p>To control the lights we use a <code>DigitalOutput</code> object and then keep it stored in a reference so we can manipulate it from a button click event for example. We add the reference with <code>const ledRef = useRef();</code>. The setup of the led looks like this and should be inside the connection just like the distance sensor.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kr">const</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DigitalOutput</span><span class="p">();</span>
-<span class="nx">led</span><span class="p">.</span><span class="nx">setHubPort</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="nx">led</span><span class="p">.</span><span class="nx">setIsHubPortDevice</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-
-<span class="nx">led</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="nx">led</span><span class="p">;</span>
-<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening LED: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-<span class="p">});</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DigitalOutput</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">led</span><span class="p">.</span><span class="nx">setHubPort</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">led</span><span class="p">.</span><span class="nx">setIsHubPortDevice</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">led</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="nx">led</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening LED: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span></span></span></code></pre></div>
 <p>When setting it up we need to also set the hub port an that it’s a hub port device. This is because the LED is not a smart VINT device but a simple device so we have to specify that.</p>
 <p>Now we just add a couple of buttons with event handlers that sets the state.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="p">}}&gt;</span>
-  <span class="nx">On</span>
-<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-<span class="p">}}&gt;</span>
-  <span class="nx">Off</span>
-<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}}&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">On</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}}&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Off</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span></span></span></code></pre></div>
 <p>Now you can turn on and off the light using the buttons in your React app and get distance input in your React app!</p>
 <p><img src="control-led.gif" alt="LED turning on and off based on clicking buttons in a web page"></p>
 <h2 id="cleaning-up-after-yourself">Cleaning up after yourself</h2>
@@ -223,48 +223,48 @@
 <p>You need to do the same with Phidgets. Havin several connections or phidget channels open can cause problems. This is espescially relevant if you&rsquo;re using Phidgets in several different components.</p>
 <p>Cleanup for when a component is removed we by returning a function in useEffect and doing the cleanup inside there. We do the cleanup itself by closing the sensor, led and connection. It&rsquo;s important that we do close the sensor and led <em>before</em> the connection.</p>
 <p>To do this we keep a list of our devices by declaring an array we store them by writing  <code>const phidgetDevices = [];</code> inside our useEffect block. Inside each of the <code>then(…</code> blocks we then add that device to the list (so we only add the ones that successfully open). After that your entire useEffect block should look like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">phidgetConnection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">Connection</span><span class="p">({</span>
-    <span class="nx">hostname</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-    <span class="nx">port</span><span class="o">:</span> <span class="mi">8989</span><span class="p">,</span>
-  <span class="p">});</span>
-
-  <span class="kr">const</span> <span class="nx">phidgetDevices</span> <span class="o">=</span> <span class="p">[];</span>
-
-  <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected to Phidgets&#39;</span><span class="p">)</span>
-
-    <span class="kr">const</span> <span class="nx">distanceSensor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DistanceSensor</span><span class="p">();</span>
-    <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">onDistanceChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">distance</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">setDistance</span><span class="p">(</span><span class="nx">distance</span><span class="p">);</span>
-    <span class="p">};</span>
-
-    <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">phidgetDevices</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">distanceSensor</span><span class="p">);</span>
-    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening sensor: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">)</span>
-    <span class="p">});</span>
-
-    <span class="kr">const</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DigitalOutput</span><span class="p">();</span>
-    <span class="nx">led</span><span class="p">.</span><span class="nx">setHubPort</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-    <span class="nx">led</span><span class="p">.</span><span class="nx">setIsHubPortDevice</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-
-    <span class="nx">led</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="nx">led</span><span class="p">;</span>
-      <span class="nx">phidgetDevices</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">led</span><span class="p">);</span>
-    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening LED: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-    <span class="p">});</span>
-
-  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error during connect: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-  <span class="p">})</span> <span class="p">;</span>
-
-  <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">phidgetDevices</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">pd</span> <span class="p">=&gt;</span> <span class="nx">pd</span><span class="p">.</span><span class="nx">close</span><span class="p">());</span>
-    <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-  <span class="p">};</span>
-<span class="p">},</span> <span class="p">[])</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">phidgetConnection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">Connection</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">hostname</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">port</span><span class="o">:</span> <span class="mi">8989</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">phidgetDevices</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Connected to Phidgets&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">distanceSensor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DistanceSensor</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">onDistanceChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">distance</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">setDistance</span><span class="p">(</span><span class="nx">distance</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">distanceSensor</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">phidgetDevices</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">distanceSensor</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening sensor: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">phidget22</span><span class="p">.</span><span class="nx">DigitalOutput</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">led</span><span class="p">.</span><span class="nx">setHubPort</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">led</span><span class="p">.</span><span class="nx">setIsHubPortDevice</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">led</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">ledRef</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="nx">led</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">phidgetDevices</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">led</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error opening LED: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error during connect: &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">phidgetDevices</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">pd</span> <span class="p">=&gt;</span> <span class="nx">pd</span><span class="p">.</span><span class="nx">close</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">phidgetConnection</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="p">[])</span></span></span></code></pre></div>
 <h2 id="thats-it">That&rsquo;s it!</h2>
 <p>Using Phidgets can seem a bit tricky if haven&rsquo;t done it before, but once you know it&rsquo;s not too bad. Having the option to easily use sensors and actuators through Phidgets with the functional style UI like React is very handy!</p>
 <p>You can view the <a href="https://github.com/torb-xyz/phidgets-in-react/tree/main">source code in this repo</a>.</p>
@@ -317,9 +317,9 @@
         
         <article>
             <h2>
-                <a href="https://www.torb.no/blog/phidgets-with-react/">Using Phidgets with React</a>
+                <a href="https://www.torb.no/blog/volumetric-uis-and-vision-pro/">Thoughts on Spatial Computing and Vision Pro</a>
              </h2>
-             <p>Phidgets is a system electronic sensors and actuators. Learn how to use it with React!</p>
+             <p>My rambling about spatial computing prompted by Apple‘s Vision pro</p>
         </article>
         
     

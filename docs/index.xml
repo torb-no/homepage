@@ -90,7 +90,18 @@ Kids are often expected to sit and be quiet. We noticed that many of them found 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.torb.no/contact/</guid>
-      <description> E-mail GitHub Mastodon Twitter LinkedIn  </description>
+      <description> E-mail GitHub Mastodon Twitter LinkedIn </description>
+    </item>
+    
+    <item>
+      <title>Thoughts on Spatial Computing and Vision Pro</title>
+      <link>https://www.torb.no/blog/volumetric-uis-and-vision-pro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.torb.no/blog/volumetric-uis-and-vision-pro/</guid>
+      <description>Thoughts on Spatial Computing and Vision Pro This is rambling post, but I thought for once I&amp;rsquo;d post something to this blog.
+I&amp;rsquo;ve been tentatively interested in Spatial Computing since University and I think they&amp;rsquo;ve been an interesting next step for user interface for a while now. Apple&amp;rsquo;s announcement of Vision Pro prompted some thoughts from me.
+Computer interfaces and dimensions If we look back you early computing interfaces you can see the teletypes as a one dimensional user interface, a 1D UI.</description>
     </item>
     
     <item>
@@ -101,7 +112,7 @@ Kids are often expected to sit and be quiet. We noticed that many of them found 
       <guid>https://www.torb.no/blog/phidgets-with-react/</guid>
       <description>Using Phidgets with React 14. November 2021
 Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React. For the impatient: the gotchas you need to be aware of is:
- Use the JavaScript library for browsers, not the NPM one. Use hooks to interact with the Phidgets library, as it’s very OOP oriented.</description>
+Use the JavaScript library for browsers, not the NPM one. Use hooks to interact with the Phidgets library, as it’s very OOP oriented.</description>
     </item>
     
   </channel>
