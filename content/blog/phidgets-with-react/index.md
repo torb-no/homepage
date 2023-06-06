@@ -1,7 +1,7 @@
 +++
 title = 'Using Phidgets with React'
 description = 'Phidgets is a system electronic sensors and actuators. Learn how to use it with React!'
-featured = true
+featured = false
 +++
 # Using Phidgets with React
 
