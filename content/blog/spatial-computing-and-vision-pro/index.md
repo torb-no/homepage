@@ -39,7 +39,7 @@ Another example is [Dynamicland](https://dynamicland.org). This is a concrete pr
 
 Ultimately I find these versions of spatial computing to be far more appealing than Apple's vision.
 
-## Back of Vision Pro
+## Back to Vision Pro
 
 Does this mean that AR/VR systems like the Vision Pro don't have it's place? No. I do think for specific 3D oriented applications like architecture or industrial design these things can be useful. I know architects who love [existing VR/AR gaming headsets](https://duckduckgo.com/?q=Steam+VR&t=osx) for architecture usage. Both for letting clients previewing work, but additionally for doing design work (think sketching in 3 dimensions). There's probably more abstract usages, like visualising mathematical concepts. Imagine learning about complex numbers using spatial computing. That's a concept that's [pretty hard to represent merely in 2 dimensions](https://en.wikipedia.org/wiki/Complex_analysis).
 
