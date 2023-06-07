@@ -5,6 +5,8 @@ featured = true
 +++
 # Thoughts on Spatial Computing and Vision Pro
 
+<p class="date">6. June 2023</p>
+
 This is rambling post, but I thought [for once I'd post something](https://chriscoyier.net/2022/06/27/there-is-no-bar/) to this blog.
 
 I've been tentatively interested in Spatial Computing since University and I think they've been an interesting next step for user interface for a while now. Apple's [announcement of Vision Pro](https://www.apple.com/newsroom/2023/06/introducing-apple-vision-pro/) prompted some thoughts from me.
