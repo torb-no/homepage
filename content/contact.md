@@ -8,5 +8,5 @@ intro = 'You can find me or contact me here.'
 
 - [E-mail](mailto:contact-web@torb.xyz)
 - [GitHub](https://github.com/torb-no)
-- [Mastodon](https://social.vivaldi.net/@torb)
+- [Mastodon](https://hachyderm.io/@torb)
 - [LinkedIn](https://www.linkedin.com/in/torb-xyz/)
