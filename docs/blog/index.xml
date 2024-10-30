@@ -4,30 +4,22 @@
     <title>Blog on Torb Lunde Miranda</title>
     <link>https://www.torb.no/blog/</link>
     <description>Recent content in Blog on Torb Lunde Miranda</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://www.torb.no/blog/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://www.torb.no/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Thoughts on Spatial Computing and Vision Pro</title>
       <link>https://www.torb.no/blog/spatial-computing-and-vision-pro/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://www.torb.no/blog/spatial-computing-and-vision-pro/</guid>
-      <description>Thoughts on Spatial Computing and Vision Pro 6. June 2023
-This is rambling post, but I thought for once I&amp;rsquo;d post something to this blog.
-I&amp;rsquo;ve been tentatively interested in Spatial Computing since University and I think they&amp;rsquo;ve been an interesting next step for user interface for a while now. Apple&amp;rsquo;s announcement of Vision Pro prompted some thoughts from me.
-Computer interfaces and dimensions If we look back you early computing interfaces you can see the teletypes as a one dimensional user interface, a 1D UI.</description>
+      <description>&lt;h1 id=&#34;thoughts-on-spatial-computing-and-vision-pro&#34;&gt;Thoughts on Spatial Computing and Vision Pro&lt;/h1&gt;&#xA;&lt;p class=&#34;date&#34;&gt;6. June 2023&lt;/p&gt;&#xA;&lt;p&gt;This is rambling post, but I thought &lt;a href=&#34;https://chriscoyier.net/2022/06/27/there-is-no-bar/&#34;&gt;for once I&amp;rsquo;d post something&lt;/a&gt; to this blog.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve been tentatively interested in Spatial Computing since University and I think they&amp;rsquo;ve been an interesting next step for user interface for a while now. Apple&amp;rsquo;s &lt;a href=&#34;https://www.apple.com/newsroom/2023/06/introducing-apple-vision-pro/&#34;&gt;announcement of Vision Pro&lt;/a&gt; prompted some thoughts from me.&lt;/p&gt;&#xA;&lt;h2 id=&#34;computer-interfaces-and-dimensions&#34;&gt;Computer interfaces and dimensions&lt;/h2&gt;&#xA;&lt;p&gt;If we look back you early computing interfaces you can see the teletypes as a one dimensional user interface, a &lt;em&gt;1D UI&lt;/em&gt;. You have this string of characters which you can in turn reply with your own words. At first they where printed on a typewriter like printer, but eventually they moved to screens. The basic idea of the command prompt was the same though.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Using Phidgets with React</title>
       <link>https://www.torb.no/blog/phidgets-with-react/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://www.torb.no/blog/phidgets-with-react/</guid>
-      <description>Using Phidgets with React 14. November 2021
-Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React. For the impatient: the gotchas you need to be aware of is:
-Use the JavaScript library for browsers, not the NPM one. Use hooks to interact with the Phidgets library, as it’s very OOP oriented.</description>
+      <description>&lt;h1 id=&#34;using-phidgets-with-react&#34;&gt;Using Phidgets with React&lt;/h1&gt;&#xA;&lt;p class=&#34;date&#34;&gt;14. November 2021&lt;/p&gt;&#xA;&lt;h3 id=&#34;phidgets-is-a-system-for-sensors-input-devices-and-controllers-of-things-like-led-or-motors-in-this-tutorial-ill-explain-gotchas-and-generally-how-to-use-it-with-react&#34;&gt;Phidgets is a system for sensors, input devices and controllers of things like LED or motors. In this tutorial I‘ll explain gotchas and generally how to use it with React.&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;phidgets.jpg&#34; alt=&#34;Various electronics components such as distance sensor, Phidgets hub, relay, thumbstick, RFID, rotation senser and more.&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;For the impatient: the gotchas you need to be aware of is:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Use the JavaScript library for browsers, &lt;em&gt;not&lt;/em&gt; the NPM one.&lt;/li&gt;&#xA;&lt;li&gt;Use hooks to interact with the Phidgets library, as it’s very OOP oriented.&lt;/li&gt;&#xA;&lt;li&gt;Remember to clean up (close phidgets and connections) when a React component is deattached.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;You can also check out &lt;a href=&#34;https://github.com/torb-xyz/phidgets-in-react&#34;&gt;this example repo&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
